@@ -1,9 +1,11 @@
 .profile {
   display: flex;
 	position: relative;
-	align-items: flex-start;
+	align-items: center;
 	color: white;
 	width: 100%;
+	margin-top: 36px;
+	margin-bottom: 47px;
 	}
 
 	@media screen and (max-width: 980px) {
