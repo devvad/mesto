@@ -1,5 +1,12 @@
 .card__image-wrapper {
 	width: 282px;
-	height: 282px;
 	overflow: hidden;
+	padding-top: 100%;
+	position: relative;
+}
+
+@media (max-width: 768px) {
+  .card__image-wrapper {
+    width: 100%;
+  }
 }

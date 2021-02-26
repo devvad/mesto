@@ -13,3 +13,13 @@
 	display: flex;
 	margin-left: auto;
 }
+
+@media (max-width: 767px) {
+	.button__add {
+		width: 282px;
+		height: 50px;
+		justify-content: center;
+		align-items: center;
+		margin: 0;
+	}
+}

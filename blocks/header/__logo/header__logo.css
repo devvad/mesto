@@ -1,4 +1,16 @@
-.logo {
-  width: 142px;
+.header__logo {
+  margin: 0;
+	width: 142px;
 	height: 33px;
+	padding-bottom: 41px;
+}
+
+@media (max-width: 767px) {
+  .header__logo {
+		width: 104px;
+		height: 25px;
+		padding-bottom: 27px;
+		display: flex;
+		align-content: center;
+  }
 }

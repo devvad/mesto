@@ -5,9 +5,3 @@
 		background-size: cover;
 		background-position: center;
 	}
-
-	@media screen and (max-width: 980px) {
-		.user-info__photo {
-			margin-top: 40px;
-		}
-	}

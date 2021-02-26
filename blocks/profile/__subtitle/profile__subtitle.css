@@ -4,3 +4,13 @@
   font-size: 18px;
   line-height: 22px;
 }
+
+@media (max-width: 768px) {
+	.profile__subtitle {
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 17px;
+		text-align: center;
+		padding-bottom: 36px;
+	}
+}

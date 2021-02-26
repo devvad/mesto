@@ -1,8 +1,6 @@
 .page {
 	max-width: 880px;
   margin: 0 auto;
-	padding-left: 20px;
-	padding-right: 20px;
   font-family: 'Inter', Arial, Helvetica, sans-serif;
 	background-color: #000;
 }

@@ -1,4 +1,11 @@
 .footer {
   display: flex;
 	margin-bottom: 60px;
+	padding-left: auto;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    margin-bottom: 36px;
+  }
 }
