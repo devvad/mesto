@@ -11,3 +11,7 @@
 	margin-left: auto;
 	margin-top: 5px;
 }
+
+.card__like:hover {
+  opacity: 0.5;
+}

@@ -3,6 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="styles/index.css">
 	<script src=""></script>
@@ -16,10 +17,10 @@
 	<div class="profile">
 		<img src="./images/АваВадим.jpg" class="profile__avatar" alt="Фотография Вадима Черепанова">
 		<div class="profile__info">
-			<h1 class="profile__title">Вадим Черепанов <button class="button button__edit profile__edit-button"></button></h1>
+			<h1 class="profile__title">Вадим Черепанов <button type="button" class="button__edit profile__edit-button"></button></h1>
 			<p class="profile__subtitle">Приемник Билла Гейтса</p>
 		</div>
-		<button class="button button__add"></button>
+		<button type="button" class="button__add"></button>
 	</div>
 
 	<main>
@@ -66,6 +67,18 @@
 		<footer class="footer">
 			<p class="footer__copyright">&copy; 2021 Mesto Russia</p>
 		</footer>
-	</body>
 
-	</html>
+		<div class="popup">
+			<div class="popup__container">
+				<h2 class="popup__name">Редактировать профиль</h2>
+				<form class="popup__form" name="popup__form">
+					<input type="text" class="popup__input" name="input-title" id="input__popup-title" value="">
+					<input type="text" class="popup__input" name="input-subtitle" id="input__popup-subtitle" value="">
+					<button type="submit" class="popup__button">Сохранить</button>
+				</form>
+				<button type="button" class="popup__closed"></button>
+			</div>
+		</div>
+	<script src="./script/script.js"></script>
+</body>
+</html>

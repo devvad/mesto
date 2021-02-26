@@ -8,3 +8,7 @@
 	background-position: center center;
 	border: 1px solid #FFFFFF;
 }
+
+.button__edit:hover {
+  opacity: 0.6;
+}

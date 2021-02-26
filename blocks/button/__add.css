@@ -14,6 +14,10 @@
 	margin-left: auto;
 }
 
+.button__add:hover {
+  opacity: 0.6;
+}
+
 @media (max-width: 767px) {
 	.button__add {
 		width: 282px;
