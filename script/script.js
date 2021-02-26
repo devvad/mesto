@@ -1,5 +1,5 @@
 let popup = document.querySelector('.popup');
-let editButton = document.querySelector('.button__edit');
+let editButton = document.querySelector('.profile__edit-button');
 let closeButton = document.querySelector('.popup__closed');
 let titleInput = document.querySelector('#input__popup-title');
 let subtitleInput = document.querySelector('#input__popup-subtitle');
