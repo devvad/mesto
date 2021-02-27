@@ -1,5 +1,5 @@
 .card__like {
-	background-image: url(../../../images/button-like.svg);
+	background-image: url(../../../images/disabled-like.svg);
 	padding: 0;
 	background-color: transparent;
 	width: 22px;
@@ -13,5 +13,9 @@
 }
 
 .card__like:hover {
-  opacity: 0.5;
+	background-image: url(../../../images/active-like.svg);
+	width: 22px;
+	height: 19px;
+	opacity: 0.5;
+	cursor: pointer;
 }

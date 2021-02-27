@@ -1,5 +1,5 @@
 .popup__closed {
-  background-image: url(../../../images/сlose_icon.png);
+  background-image: url(../../../images/close-icon.svg);
   border: none;
   width: 40px;
   height: 40px;
@@ -13,6 +13,7 @@
 
 .popup__closed:hover {
   opacity: 0.8;
+	cursor: pointer;
 }
 
 @media (max-width: 768px) {
