@@ -1,6 +1,13 @@
 .page {
 	max-width: 880px;
   margin: 0 auto;
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
+	font-family: 'Inter', Arial, Helvetica, sans-serif;
 	background-color: #000;
+	padding-top: 45px;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding-top: 28px;
+  }
 }

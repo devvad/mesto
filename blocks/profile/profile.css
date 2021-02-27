@@ -1,18 +1,16 @@
 .profile {
-  display: flex;
-	position: relative;
-	align-items: center;
-	color: white;
-	margin-top: 36px;
-	margin-bottom: 47px;
-	padding-left: 20px;
-	padding-right: 20px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0 auto;
+		margin-top: 40px;
+		margin-bottom: 51px;
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 1024px) {
 		.profile {
 			flex-direction: column;
-			margin-top: 40px;
-			text-align: center;
+			margin-top: 42px;
+			margin-bottom: 36px;
 		}
 	}

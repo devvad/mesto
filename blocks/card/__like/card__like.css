@@ -7,15 +7,14 @@
 	background-repeat: no-repeat;
 	background-position: center center;
 	border: none;
-	display: flex;
-	margin-left: auto;
-	margin-top: 5px;
+	cursor: pointer;
+	outline: none;
 }
 
 .card__like:hover {
+	background-image: url(../../../images/hover-like.svg);
+}
+
+.card__like:active {
 	background-image: url(../../../images/active-like.svg);
-	width: 22px;
-	height: 19px;
-	opacity: 0.5;
-	cursor: pointer;
 }

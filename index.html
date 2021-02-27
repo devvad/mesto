@@ -13,13 +13,18 @@
   <header class="header">
     <img class="header__logo" src="./images/logo.svg" alt="Логотип сайта Mesto">
   </header>
+
 	<main>
 		<section class="profile">
-			<img src="./images/АваВадим.jpg" class="profile__avatar" alt="Фотография Вадима Черепанова">
-			<div class="profile__info">
-				<h1 class="profile__title">Вадим Черепанов</h1>
-				<button type="button" class="profile__edit-button"></button>
-				<p class="profile__subtitle">Приемник Билла Гейтса</p>
+			<div class="profile__image">
+				<img src="./images/АваВадим.jpg" class="profile__avatar" alt="Фотография Вадима Черепанова">
+				<div>
+					<div class="profile__info">
+						<h1 class="profile__title">Вадим Черепанов</h1>
+						<button type="button" class="profile__edit-button"></button>
+					</div>
+					<p class="profile__subtitle">Приемник Билла Гейтса</p>
+				</div>
 			</div>
 			<button type="button" class="profile__add-button"></button>
 		</section>
@@ -28,38 +33,50 @@
 			<ul class="cards">
 				<li class="card">
 					<img class="card__image" src="./images/Батайск.jpg" alt="Батайск">
-					<h2 class="card__title">Батайск</h2>
-					<button type="button" class="card__like"></button>
+					<div class="card__info">
+						<h2 class="card__title">Батайск</h2>
+						<button type="button" class="card__like"></button>
+					</div>
 				</li>
 
 				<li class="card">
 					<img class="card__image" src="./images/Собор.jpg" alt="Собор">
-					<h2 class="card__title">Ростов-на-Дону</h2>
-					<button type="button" class="card__like"></button>
+					<div class="card__info">
+						<h2 class="card__title">Ростов-на-Дону</h2>
+						<button type="button" class="card__like"></button>
+					</div>
 				</li>
 
 				<li class="card">
 					<img class="card__image" src="./images/Лестница.jpg" alt="Лестница">
-					<h2 class="card__title">Таганрог</h2>
-					<button type="button" class="card__like"></button>
+					<div class="card__info">
+						<h2 class="card__title">Таганрог</h2>
+						<button type="button" class="card__like"></button>
+					</div>
 				</li>
 
 				<li class="card">
 					<img class="card__image" src="./images/Новосибирск.jpg" alt="Новосибирск">
-					<h2 class="card__title">Новосибирск</h2>
-					<button type="button" class="card__like"></button>
+					<div class="card__info">
+						<h2 class="card__title">Новосибирск</h2>
+						<button type="button" class="card__like"></button>
+					</div>
 				</li>
 
 				<li class="card">
 					<img class="card__image" src="./images/Чехов.jpg" alt="Чехов">
-					<h2 class="card__title">Таганрог</h2>
-					<button type="button" class="card__like"></button>
+					<div class="card__info">
+						<h2 class="card__title">Таганрог</h2>
+						<button type="button" class="card__like"></button>
+					</div>
 				</li>
 
 				<li class="card">
 					<img class="card__image" src="./images/Стелла.jpg" alt="Стелла">
-					<h2 class="card__title">Ростов-на-Дону</h2>
-					<button type="button" class="card__like"></button>
+					<div class="card__info">
+						<h2 class="card__title">Ростов-на-Дону</h2>
+						<button type="button" class="card__like"></button>
+					</div>
 				</li>
 			</ul>
 		</section>

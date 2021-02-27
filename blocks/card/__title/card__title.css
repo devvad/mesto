@@ -1,12 +1,9 @@
 .card__title {
-	background-color: white;
 	color: black;
-	padding: 25px 20px;
 	font-weight: 900;
 	font-size: 24px;
 	line-height: 29px;
 	margin: 0;
-	display: flex;
 	text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;

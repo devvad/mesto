@@ -1,15 +1,4 @@
 .card {
 	border-radius: 10px;
-  object-fit: cover;
 	overflow: hidden;
-	text-overflow: ellipsis;
-  white-space: nowrap;
-	padding: 0;
-	margin: 0;
-}
-
-@media (max-width: 768px) {
-  .card {
-		width: 100%;
-  }
 }
