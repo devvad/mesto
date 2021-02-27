@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="styles/index.css">
+	<link rel="stylesheet" href="./pages/index.css">
 	<title>Mesto</title>
 </head>
 
@@ -13,71 +13,73 @@
   <header class="header">
     <img class="header__logo" src="./images/logo.svg" alt="Логотип сайта Mesto">
   </header>
-	<div class="profile">
-		<img src="./images/АваВадим.jpg" class="profile__avatar" alt="Фотография Вадима Черепанова">
-		<div class="profile__info">
-			<h1 class="profile__title">Вадим Черепанов <button type="button" class="profile__edit-button"></button></h1>
-			<p class="profile__subtitle">Приемник Билла Гейтса</p>
-		</div>
-		<button type="button" class="profile__add-button"></button>
-	</div>
-
 	<main>
-		<ul class="cards">
-			<li class="card">
-				<div class="card__image-wrapper">
+		<section class="profile">
+			<img src="./images/АваВадим.jpg" class="profile__avatar" alt="Фотография Вадима Черепанова">
+			<div class="profile__info">
+				<h1 class="profile__title">Вадим Черепанов</h1>
+				<button type="button" class="profile__edit-button"></button>
+				<p class="profile__subtitle">Приемник Билла Гейтса</p>
+			</div>
+			<button type="button" class="profile__add-button"></button>
+		</section>
+
+		<section>
+			<ul class="cards">
+				<li class="card">
 					<img class="card__image" src="./images/Батайск.jpg" alt="Батайск">
-				</div>
-				<div class="card__title">Батайск <button class="button card__like"></button></div>
-			</li>
-			<li class="card">
-				<div class="card__image-wrapper">
+					<h2 class="card__title">Батайск</h2>
+					<button type="button" class="card__like"></button>
+				</li>
+
+				<li class="card">
 					<img class="card__image" src="./images/Собор.jpg" alt="Собор">
-				</div>
-				<div class="card__title">Ростов-на-Дону <button class="button card__like"></button></div>
-			</li>
-			<li class="card">
-				<div class="card__image-wrapper">
-					<img class="card__image" src="./images/Каменная лестница.jpg" alt="Лестница">
-				</div>
-				<div class="card__title">Таганрог <button class="button card__like"></button></div>
-			</li>
-			<li class="card">
-				<div class="card__image-wrapper">
+					<h2 class="card__title">Ростов-на-Дону</h2>
+					<button type="button" class="card__like"></button>
+				</li>
+
+				<li class="card">
+					<img class="card__image" src="./images/Лестница.jpg" alt="Лестница">
+					<h2 class="card__title">Таганрог</h2>
+					<button type="button" class="card__like"></button>
+				</li>
+
+				<li class="card">
 					<img class="card__image" src="./images/Новосибирск.jpg" alt="Новосибирск">
-				</div>
-				<div class="card__title">Новосибирск <button class="button card__like"></button></div>
-			</li>
-			<li class="card">
-				<div class="card__image-wrapper">
+					<h2 class="card__title">Новосибирск</h2>
+					<button type="button" class="card__like"></button>
+				</li>
+
+				<li class="card">
 					<img class="card__image" src="./images/Чехов.jpg" alt="Чехов">
-				</div>
-				<div class="card__title">Таганрог <button class="button card__like"></button></div>
-			</li>
-			<li class="card">
-				<div class="card__image-wrapper">
+					<h2 class="card__title">Таганрог</h2>
+					<button type="button" class="card__like"></button>
+				</li>
+
+				<li class="card">
 					<img class="card__image" src="./images/Стелла.jpg" alt="Стелла">
-				</div>
-				<div class="card__title">Ростов-на-Дону <button class="button card__like"></button></div>
-			</li>
-		</ul>
+					<h2 class="card__title">Ростов-на-Дону</h2>
+					<button type="button" class="card__like"></button>
+				</li>
+			</ul>
+		</section>
 	</main>
 
-		<footer class="footer">
-			<p class="footer__copyright">&copy; 2021 Mesto Russia</p>
-		</footer>
+	<footer class="footer">
+		<p class="footer__copyright">&copy; 2021 Mesto Russia</p>
+	</footer>
 
-		<div class="popup">
-			<div class="popup__container">
-				<h2 class="popup__name">Редактировать профиль</h2>
-				<form class="popup__form" name="popup__form">
-					<input type="text" class="popup__input" name="input-title" id="input__popup-title" value="">
-					<input type="text" class="popup__input" name="input-subtitle" id="input__popup-subtitle" value="">
-					<button type="submit" class="popup__button">Сохранить</button>
-				</form>
-				<button type="button" class="popup__closed"></button>
+	<div class="popup">
+		<div class="popup__container">
+			<h2 class="popup__name">Редактировать профиль</h2>
+			<form class="popup__form" name="popup-form">
+				<input type="text" class="popup__input" name="input-title" id="input-popup-title" value="">
+				<input type="text" class="popup__input" name="input-subtitle" id="input-popup-subtitle" value="">
+				<button type="submit" class="popup__button">Сохранить</button>
+			</form>
+			<button type="button" class="popup__closed"></button>
 			</div>
 		</div>
-	<script src="./script/script.js"></script>
+	<script src="./script/popup.js"></script>
 </body>
 </html>

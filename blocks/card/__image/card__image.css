@@ -5,4 +5,14 @@
 	top: 0;
 	padding: 0;
 	margin: 0;
+	width: 282px;
+	overflow: hidden;
+	padding-top: 100%;
+	position: relative;
+}
+
+@media (max-width: 768px) {
+  .card__image {
+    width: 100%;
+  }
 }
