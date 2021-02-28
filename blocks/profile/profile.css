@@ -7,10 +7,17 @@
   margin-bottom: 51px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .profile {
     flex-direction: column;
     margin-top: 42px;
     margin-bottom: 36px;
+  }
+}
+
+@media (max-width: 900px) {
+  .profile {
+		padding-left: 20px;
+		padding-right: 20px;
   }
 }

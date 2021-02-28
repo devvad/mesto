@@ -1,3 +1,5 @@
-.profile__user {
-	
+@media (max-width: 768px) {
+  .profile__user {
+		text-align: center;
+  }
 }

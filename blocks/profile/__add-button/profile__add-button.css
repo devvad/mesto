@@ -9,16 +9,18 @@
   box-sizing: border-box;
   border: 2px solid #fff;
   border-radius: 2px;
+	margin-left: auto;
+	cursor: pointer;
 }
 
 .profile__add-button:hover {
   opacity: 0.6;
-  cursor: pointer;
 }
 
 @media (max-width: 768px) {
   .profile__add-button {
     background-image: url(../../../images/button_add_small.svg);
     width: 282px;
+		margin: 0;
   }
 }
