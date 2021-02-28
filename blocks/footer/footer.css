@@ -1,8 +1,8 @@
 .footer {
   display: flex;
-	margin-bottom: 60px;
-	padding-left: 0;
-	padding-right: 0;
+  margin-bottom: 60px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 @media (max-width: 768px) {

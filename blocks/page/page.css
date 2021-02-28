@@ -1,9 +1,9 @@
 .page {
-	max-width: 880px;
+  max-width: 880px;
   margin: 0 auto;
-	font-family: 'Inter', Arial, Helvetica, sans-serif;
-	background-color: #000;
-	padding-top: 45px;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  background-color: #000;
+  padding-top: 45px;
 }
 
 @media (max-width: 768px) {

@@ -9,12 +9,12 @@
   position: absolute;
   top: -40px;
   right: -40px;
-	outline: none;
+  outline: none;
 }
 
 .popup__closed:hover {
   opacity: 0.6;
-	cursor: pointer;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {

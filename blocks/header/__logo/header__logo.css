@@ -1,17 +1,17 @@
 .header__logo {
   margin: 0;
-	width: 142px;
-	height: 33px;
-	padding-bottom: 41px;
+  width: 142px;
+  height: 33px;
+  padding-bottom: 41px;
 }
 
 @media (max-width: 880px) {
   .header__logo {
-		width: 104px;
-		height: 25px;
-		padding-bottom: 31px;
-		margin-left: 27px;
-		display: flex;
-		align-content: center;
+    width: 104px;
+    height: 25px;
+    padding-bottom: 31px;
+    margin-left: 27px;
+    display: flex;
+    align-content: center;
   }
 }

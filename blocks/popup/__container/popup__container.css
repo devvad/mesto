@@ -1,6 +1,6 @@
 .popup__container {
   max-width: 430px;
-	max-height: 330px;
+  max-height: 330px;
   box-sizing: border-box;
   border-radius: 10px;
   position: relative;
@@ -10,6 +10,6 @@
 @media (max-width: 768px) {
   .popup__container {
     max-width: 282px;
-		max-height: 322px;
+    max-height: 322px;
   }
 }

@@ -8,14 +8,14 @@ let subtitleProfile = document.querySelector('.profile__subtitle');
 let form = document.querySelector('.popup__form')
 
 function openPopup() {
-  popup.classList.add('popup__opened');
+  popup.classList.add('popup_opened');
   titleInput.value = titleProfile.textContent;
   subtitleInput.value = subtitleProfile.textContent;
 }
 editButton.addEventListener('click', openPopup);
 
 function closePopup() {
-  popup.classList.remove('popup__opened');
+  popup.classList.remove('popup_opened');
 }
 closeButton.addEventListener('click', closePopup);
 
