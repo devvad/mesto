@@ -9,8 +9,8 @@
   box-sizing: border-box;
   border: 2px solid #fff;
   border-radius: 2px;
-	margin-left: auto;
-	cursor: pointer;
+  margin-left: auto;
+  cursor: pointer;
 }
 
 .profile__add-button:hover {

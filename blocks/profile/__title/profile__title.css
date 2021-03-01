@@ -1,6 +1,6 @@
 .profile__title {
-	display: block;
-  max-width: 450px;
+  display: block;
+  max-width: 375px;
   margin: 0 18px 0 0;
   font-weight: 500;
   font-style: normal;
@@ -17,6 +17,6 @@
     font-size: 27px;
     line-height: 33px;
     margin: 0 10px 0 0;
-		max-width: 250px;
+    max-width: 250px;
   }
 }
