@@ -34,8 +34,12 @@ function renderCard (card) {
 </li>`
 }
 
-const cardHtml = initialCards.map(function(card){
-	return renderCard(card);
-}).join("\n");
+function renderAllCards() {
+	const cardHtml = initialCards.map(function(card){
+		return renderCard(card);
+	}).join("\n");
 
-document.querySelector(".cards").innerHTML = cardHtml;
+	document.querySelector(".cards").innerHTML = cardHtml;
+}
+
+renderAllCards();

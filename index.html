@@ -51,9 +51,9 @@
 
 	<div class="popup popup_type_place">
 		<div class="popup__container">
-			<img src="./images/close.svg" alt="Закрыть" class="popup__closed">
+			<button type="button" class="popup__closed"></button>
 			<h3 class="popup__title">Новое место</h3>
-			<form class="popup__form" name="place" novalidate>
+			<form class="popup__form" name="place">
 				<div class="popup__input-container">
 					<input type="text" name="name" class="popup__input popup__input_type_name" placeholder="Название" minlength="2" maxlength="30" required>
 				</div>
@@ -72,7 +72,8 @@
 		</div>
 	</div>
 
-	<script src="./scripts/index.js"></script>
+	<script src="./scripts/popup-edit-user.js"></script>
 	<script src="./scripts/initialCards.js"></script>
+	<script src="./scripts/popup-new-place.js"></script>
 </body>
 </html>
