@@ -29,7 +29,7 @@ function renderCard (card) {
 	<img class="card__image" src="${card.link}" alt="${card.name}">
 	<div class="card__info">
 		<h2 class="card__title">${card.name}</h2>
-		<button type="button" class="card__like"></button>
+		<button type="button" class="card__like card__like_active"></button>
 	</div>
 </li>`
 }
@@ -43,3 +43,8 @@ function renderAllCards() {
 }
 
 renderAllCards();
+
+// 1. Внутри renderAllCards после того, как добавили карточки, нужно найти все сердечки (querySelectorAll);
+
+// 2. Пройтись по всем элементам, используя метод forEach (https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll#accessing_the_matches).
+ // Для каждого элемента навесить обработчик на событие click, в котором переключать класс card__like_active (classList.toggle).
