@@ -46,18 +46,19 @@ function renderAllCards() {
 
 	likes.forEach(function(likeButton) {
 		likeButton.addEventListener('click', function() {
-			console.log(likeButton);
 			likeButton.classList.toggle('card__like_active');
+		});
+	});
+
+	let cards = document.querySelectorAll('.card');
+	let cardsContainer = document.querySelector('.cards');
+	cards.forEach(function(card) {
+		card.addEventListener('click', function(event) {
+			if (event.target.classList.contains('card__delete-icon')) {
+				cardsContainer.removeChild(event.currentTarget);
+			}
 		});
 	});
 }
 
 renderAllCards();
-
-// 1. Внутри renderAllCards на каждую карточку повесить обработчик события click. querySelectorAll - выбираю все корзины.
-
-// 2. Фильтровать клики, которые вспылвают от иконки корзины (event.currentTarget) и реагировать только на них.
-
-// 3. Если поймали клик от иконки, нужно удалить карточку c помощью removeChild (найти родителя и передать в removeChild карточку, на котрую случился клик) :
-
-// https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild
