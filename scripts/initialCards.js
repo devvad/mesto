@@ -1,6 +1,6 @@
 const initialCards = [{
   name: 'Батайск',
-  link: 'https://stihi.ru/pics/2013/12/07/8880.jpg'
+  link: 'https://i.mycdn.me/i?r=AyH4iRPQ2q0otWIFepML2LxRS8l9iCIS9vT63qINr_7rSQ.jpg'
 },
 {
   name: 'Ростов-на-Дону',
@@ -29,7 +29,8 @@ function renderCard (card) {
 	<img class="card__image" src="${card.link}" alt="${card.name}">
 	<div class="card__info">
 		<h2 class="card__title">${card.name}</h2>
-		<button type="button" class="card__like card__like_active"></button>
+		<button type="button" class="card__like"></button>
+		<button type="button" class="card__delete-icon"></button>
 	</div>
 </li>`
 }
@@ -40,11 +41,23 @@ function renderAllCards() {
 	}).join("\n");
 
 	document.querySelector(".cards").innerHTML = cardHtml;
+
+	let likes = document.querySelectorAll('.card__like');
+
+	likes.forEach(function(likeButton) {
+		likeButton.addEventListener('click', function() {
+			console.log(likeButton);
+			likeButton.classList.toggle('card__like_active');
+		});
+	});
 }
 
 renderAllCards();
 
-// 1. Внутри renderAllCards после того, как добавили карточки, нужно найти все сердечки (querySelectorAll);
+// 1. Внутри renderAllCards на каждую карточку повесить обработчик события click. querySelectorAll - выбираю все корзины.
 
-// 2. Пройтись по всем элементам, используя метод forEach (https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll#accessing_the_matches).
- // Для каждого элемента навесить обработчик на событие click, в котором переключать класс card__like_active (classList.toggle).
+// 2. Фильтровать клики, которые вспылвают от иконки корзины (event.currentTarget) и реагировать только на них.
+
+// 3. Если поймали клик от иконки, нужно удалить карточку c помощью removeChild (найти родителя и передать в removeChild карточку, на котрую случился клик) :
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild

@@ -31,12 +31,3 @@ function onNewCardFormSubmit(evt) {
 
 let newCardForm = document.querySelector('.popup_type_place .popup__form');
 newCardForm.addEventListener('submit', onNewCardFormSubmit);
-
-
-// 1. Повесить на форму внутри попапа событие submit с обработчиком.
-
-// 2. В обработчике найти инпуты и взять оттуда значение (название места и ссылка на картинку).
-
-// 3. Сформировать объект для колекции initialCards и положить его в НАЧАЛО массива.
-
-// 4. Вызвать функцию renderAllCards.

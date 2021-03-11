@@ -15,7 +15,6 @@
 	background-image: url(../../../images/hover-like.svg);
 }
 
-.card__like:active,
-.card__like_active {
+.card__like.card__like_active {
 	background-image: url(../../../images/active-like.svg);
 }
