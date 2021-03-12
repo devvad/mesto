@@ -57,6 +57,10 @@ function renderAllCards() {
 			if (event.target.classList.contains('card__delete-icon')) {
 				cardsContainer.removeChild(event.currentTarget);
 			}
+
+			if (event.target.classList.contains('card__image')) {
+				openGallery(event.target.src, event.target.alt);
+			}
 		});
 	});
 }
