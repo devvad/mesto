@@ -16,10 +16,10 @@ const initialCards = [{
 },
 {
   name: 'Таганрог',
-  link: 'http://school30tag.moy.su/muzey/TAGAN02.jpg'
+  link: 'https://school30tag.moy.su/muzey/TAGAN02.jpg'
 },
 {
   name: 'Ростов-на-Дону',
-  link: 'http://don.go2all.ru/imgs/25/19/53274.jpg'
+  link: 'https://don.go2all.ru/imgs/25/19/53274.jpg'
 },
 ];
