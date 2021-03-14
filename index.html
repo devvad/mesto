@@ -41,8 +41,8 @@
 		<div class="popup__container">
 			<h2 class="popup__name">Редактировать профиль</h2>
 			<form class="popup__form" name="popup-form">
-				<input type="text" class="popup__input" name="input-title" id="input-popup-title" value="">
-				<input type="text" class="popup__input" name="input-subtitle" id="input-popup-subtitle" value="">
+				<input type="text" class="popup__input" name="input-title" id="input-popup-title" value="" placeholder="Имя" required>
+				<input type="text" class="popup__input" name="input-subtitle" id="input-popup-subtitle" value="" placeholder="Вид деятельности" required>
 				<button type="submit" class="popup__button">Сохранить</button>
 			</form>
 			<button type="button" class="popup__closed"></button>
@@ -53,7 +53,7 @@
 		<div class="popup__container">
 			<button type="button" class="popup__closed"></button>
 			<h3 class="popup__title">Новое место</h3>
-			<form class="popup__form" name="place">
+			<form class="popup__form-add-card" name="place">
 				<input type="text" name="name" class="popup__input popup__input_type_name" placeholder="Название" minlength="2" maxlength="30" required>
 				<input type="URL" name="link" class="popup__input popup__input_type_link-url" placeholder="Ссылка на картинку" required>
 				<button type="submit" class="popup__button" aria-label="Добавить место">Создать</button>
