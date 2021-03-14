@@ -41,7 +41,6 @@ editProfileForm.addEventListener("submit", submitEditProfileForm);
 
 // 2 попап - Добавление нового места:
 const addPopup = makePopup(document.querySelector(".popup_type_place"));
-
 const addButton = document.querySelector(".profile__add-button");
 addButton.addEventListener("click", function() {
 	addPopup.open();
@@ -67,18 +66,14 @@ newCardForm.addEventListener("submit", function(event) {
 
 // 3 попап - Раскрытие картинки на весь экран:
 const popupGallery = makePopup(document.querySelector(".popup_gallery"));
+const galleryImage = document.querySelector(".popup__image");
+const galleryFigcaption = document.querySelector(".popup__figcaption");
 
 function openGallery(image, figcaption) {
-	const galleryImage = document.querySelector(".popup_gallery .popup__image");
 	galleryImage.setAttribute("src", image);
-
-	const galleryFigcaption = document.querySelector(
-		".popup_gallery .popup__figcaption"
-	);
 	galleryFigcaption.innerText = figcaption;
-
 	popupGallery.open();
-}
+};
 
 // 4 отрисовка списка карточек
 
