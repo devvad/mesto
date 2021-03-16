@@ -66,35 +66,37 @@ const popupGallery = makePopup(document.querySelector(".popup_gallery"));
 const galleryImage = document.querySelector(".popup__image");
 const galleryFigcaption = document.querySelector(".popup__figcaption");
 
-function openGallery(image, figcaption) {
-	galleryImage.setAttribute("src", image);
-	galleryFigcaption.innerText = figcaption;
+function openGallery(name, link) {
+	galleryImage.setAttribute("src", link);
+	galleryImage.setAttribute("alt", name);
+	galleryFigcaption.innerText = name;
 	popupGallery.open();
 };
 
 // 4 отрисовка списка карточек
 function createCard(name, link) {
-	const card = document.createElement('li');
-	card.setAttribute('class', 'card');
-	card.innerHTML = `
-		<img class="card__image" src="${link}" alt="${name}">
-		<div class="card__info">
-			<h2 class="card__title">${name}</h2>
-			<button type="button" class="card__like"></button>
-			<button type="button" class="card__delete-icon"></button>
-		</div>
-	`;
-	card.addEventListener("click", function(event) {
-		if (event.target.classList.contains("card__like")) {
-			event.target.classList.toggle("card__like_active")
-		}
-		if (event.target.classList.contains("card__delete-icon")) {
-			cards.removeChild(event.currentTarget);
-		}
-		if (event.target.classList.contains("card__image")) {
-			openGallery(event.target.src, event.target.alt);
-		}
+	const card = document.getElementById("card").content.cloneNode(true);
+
+	const cardLike = card.querySelector(".card__like");
+	const deleteIcon = card.querySelector(".card__delete-icon");
+	const cardImage = card.querySelector(".card__image");
+	const cardTitle = card.querySelector(".card__title");
+
+	cardImage.setAttribute("src", link);
+	cardTitle.innerText = name;
+
+	cardLike.addEventListener("click", function() {
+		cardLike.classList.toggle("card__like_active");
 	});
+
+	deleteIcon.addEventListener("click", function(event) {
+		event.target.closest('.card').remove();
+	});
+
+	cardImage.addEventListener("click", function() {
+		openGallery(name, link);
+	});
+
 	return card;
 }
 
