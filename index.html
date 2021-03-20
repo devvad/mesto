@@ -41,8 +41,8 @@
 		<div class="popup__container">
 			<h2 class="popup__name">Редактировать профиль</h2>
 			<form class="popup__form" name="popup-form">
-				<input type="text" class="popup__input" name="input-title" id="input-popup-title" value="" placeholder="Имя" required>
-				<input type="text" class="popup__input" name="input-subtitle" id="input-popup-subtitle" value="" placeholder="Вид деятельности" required>
+				<input type="text" class="popup__input" name="input-title" id="input-popup-title" value="" placeholder="Имя" minlength="2" maxlength="40" required>
+				<input type="text" class="popup__input" name="input-subtitle" id="input-popup-subtitle" value="" placeholder="Вид деятельности" minlength="2" maxlength="200" required>
 				<button type="submit" class="popup__button">Сохранить</button>
 			</form>
 			<button type="button" class="popup__closed"></button>
