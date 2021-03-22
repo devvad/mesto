@@ -1,12 +1,39 @@
-// 1. Сделать попапу браузерную валидацию.
+const showInputError = (popupElement, inputElement, errorMessage) => {
+  const errorElement = popupElement.querySelector(`.${inputElement.id}-error`);
+	inputElement.classList.add('popup__input_error');
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add('popup__error-message_active');
+};
 
-// 2. Отменить браузерную валидацию через novalidate.
+const hideInputError = (popupElement, inputElement) => {
+  const errorElement = popupElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.remove('popup__input_error');
+  errorElement.classList.remove('popup__error-message_active');
+  errorElement.textContent = '';
+};
 
-// 3. Создать функцию addValidation. Она будет принимать объект с настройками. Один ключ "form" и значение-селектор, чтобы выбрать форму.
+const checkInputValidity = (popupElement, inputElement) => {
+  if (!inputElement.validity.valid) {
+    showInputError(popupElement, inputElement, inputElement.validationMessage);
+  } else {
+    hideInputError(popupElement, inputElement);
+  }
+};
 
-// 4. Реализовать созданную функцию: найти форму, повесить sumbit, повесить инпуты.
+const setEventListeners = (popupElement) => {
+  const inputList = Array.from(popupElement.querySelectorAll('.popup__input'));
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', function () {
+      checkInputValidity(popupElement, inputElement);
+    });
+  });
+};
 
-// 3 пункт:
-// addValidation({
-// 	form: ".popup__form"
-// })
+const enableValidation = () => {
+  const popups = Array.from(document.querySelectorAll('.popup'));
+  popups.forEach((popup) => {
+		setEventListeners(popup);
+  });
+};
+
+enableValidation();
