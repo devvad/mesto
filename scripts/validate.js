@@ -36,4 +36,18 @@ const enableValidation = () => {
   });
 };
 
+function hasInvalidInput (inputList) {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  })
+}
+
+function toggleButtonState (inputList, buttonElement) {
+  if (hasInvalidInput (inputList)) {
+    buttonElement.classList.add('popup__button_disabled');
+  } else {
+    buttonElement.classList.remove('popup__button_disabled');
+  }
+}
+
 enableValidation();

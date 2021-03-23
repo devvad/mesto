@@ -3,9 +3,13 @@ function makePopup(rootElement) {
   const popup = {
     open() {
       rootElement.classList.add("popup_opened");
+			rootElement.addEventListener("mousedown", closePopupOverlay);
+			document.addEventListener("keydown", closePopupEscape);
     },
     close() {
       rootElement.classList.remove("popup_opened");
+			rootElement.removeEventListener("mousedown", closePopupOverlay);
+			document.removeEventListener("keydown", closePopupEscape);
     }
   };
   const closeButtonElement = rootElement.querySelector(".popup__closed");
@@ -13,6 +17,22 @@ function makePopup(rootElement) {
     popup.close();
   });
   return popup;
+}
+
+// Закрытие попапов нажатием на overlay
+const closePopupOverlay = (event) => {
+  if (event.target.classList.contains("popup_opened")) {
+    event.target.classList.remove("popup_opened");
+  }
+}
+
+// Закрытие попапов нажатием на клавишу ESC
+const closePopupEscape = (event) => {
+  if (event.key === "Escape") {
+    addPopup.close();
+		editPopup.close();
+		popupGallery.close();
+  }
 }
 
 // 1 попап - Редактирование профиля:
