@@ -22,9 +22,11 @@ const checkInputValidity = (popupElement, inputElement) => {
 
 const setEventListeners = (popupElement) => {
   const inputList = Array.from(popupElement.querySelectorAll(".popup__input"));
+	const buttonElement = popupElement.querySelector(".popup__button");
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
       checkInputValidity(popupElement, inputElement);
+			toggleButtonState(inputList, buttonElement);
     });
   });
 };
@@ -45,8 +47,10 @@ function hasInvalidInput (inputList) {
 function toggleButtonState (inputList, buttonElement) {
   if (hasInvalidInput (inputList)) {
     buttonElement.classList.add("popup__button_disabled");
+		buttonElement.setAttribute("disabled", "disabled");
   } else {
     buttonElement.classList.remove("popup__button_disabled");
+		buttonElement.removeAttribute("disabled");
   }
 }
 
