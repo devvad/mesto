@@ -1,38 +1,32 @@
 // 0 общие функции для попапов
 function makePopup(rootElement) {
-  const popup = {
+	const closeButtonElement = rootElement.querySelector(".popup__closed");
+	const popup = {
     open() {
       rootElement.classList.add("popup_opened");
-			rootElement.addEventListener("mousedown", closePopupOverlay);
+			rootElement.addEventListener("mousedown", onClosePopup);
 			document.addEventListener("keydown", closePopupEscape);
+  		closeButtonElement.addEventListener("click", onClosePopup);
     },
     close() {
       rootElement.classList.remove("popup_opened");
-			rootElement.removeEventListener("mousedown", closePopupOverlay);
+			rootElement.removeEventListener("mousedown", onClosePopup);
 			document.removeEventListener("keydown", closePopupEscape);
+			closeButtonElement.removeEventListener("click", onClosePopup);
     }
   };
-  const closeButtonElement = rootElement.querySelector(".popup__closed");
-  closeButtonElement.addEventListener("click", function() {
-    popup.close();
-  });
+
+	const closePopupEscape = (event) => {
+  	if (event.key === "Escape") {
+    	popup.close();
+  	}
+	}
+
+	const onClosePopup = () => {
+		popup.close();
+	}
+
   return popup;
-}
-
-// Закрытие попапов нажатием на overlay
-const closePopupOverlay = (event) => {
-  if (event.target.classList.contains("popup_opened")) {
-    event.target.classList.remove("popup_opened");
-  }
-}
-
-// Закрытие попапов нажатием на клавишу ESC
-const closePopupEscape = (event) => {
-  if (event.key === "Escape") {
-    addPopup.close();
-		editPopup.close();
-		popupGallery.close();
-  }
 }
 
 // 1 попап - Редактирование профиля:
