@@ -30,7 +30,7 @@ function makePopup(rootElement) {
 }
 
 // 1 попап - Редактирование профиля:
-const editPopup = makePopup(document.querySelector(".popup"));
+const editPopup = makePopup(document.querySelector(".profile-popup"));
 const editButton = document.querySelector(".profile__edit-button");
 const closeButton = document.querySelector(".popup__closed");
 const titleInput = document.querySelector("#input-popup-title");
@@ -55,13 +55,13 @@ function submitEditProfileForm(evt) {
 editProfileForm.addEventListener("submit", submitEditProfileForm);
 
 // 2 попап - Добавление нового места:
-const addPopup = makePopup(document.querySelector(".popup_type_place"));
+const addPopup = makePopup(document.querySelector(".popup-type-place"));
 const addButton = document.querySelector(".profile__add-button");
 addButton.addEventListener("click", function() {
 	addPopup.open();
 });
 
-const newCardForm = document.querySelector(".popup__form-add-card");
+const newCardForm = document.querySelector(".popup__form");
 const nameInput = document.querySelector(".popup__input_type_name");
 const imageInput = document.querySelector(".popup__input_type_link-url");
 

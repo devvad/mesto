@@ -37,7 +37,7 @@
 		<p class="footer__copyright">&copy; 2021 Mesto Russia</p>
 	</footer>
 
-	<div class="popup">
+	<div class="popup profile-popup">
 		<div class="popup__container">
 			<h2 class="popup__name">Редактировать профиль</h2>
 			<form class="popup__form" name="popup-form" novalidate>
@@ -51,11 +51,11 @@
 		</div>
 	</div>
 
-	<div class="popup popup_type_place">
+	<div class="popup popup-type-place">
 		<div class="popup__container">
 			<button type="button" class="popup__closed"></button>
 			<h3 class="popup__title">Новое место</h3>
-			<form class="popup__form-add-card" name="place" novalidate>
+			<form class="popup__form" name="place" novalidate>
 				<input type="text" id="card-name" name="name" class="popup__input popup__input_type_name" placeholder="Название" minlength="2" maxlength="30" required>
 				<span class="popup__error-message card-name-error"></span>
 				<input type="URL" id="link" name="link" class="popup__input popup__input_type_link-url" placeholder="Ссылка на картинку" required>
