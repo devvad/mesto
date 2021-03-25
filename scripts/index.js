@@ -4,28 +4,34 @@ function makePopup(rootElement) {
 	const popup = {
     open() {
       rootElement.classList.add("popup_opened");
-			rootElement.addEventListener("mousedown", onClosePopup);
-			document.addEventListener("keydown", closePopupEscape);
-  		closeButtonElement.addEventListener("click", onClosePopup);
+			rootElement.addEventListener("mousedown", onOverlayClick);
+			document.addEventListener("keydown", onKeyDown);
+  		closeButtonElement.addEventListener("click", onCloseButtonClick);
     },
     close() {
       rootElement.classList.remove("popup_opened");
-			rootElement.removeEventListener("mousedown", onClosePopup);
-			document.removeEventListener("keydown", closePopupEscape);
-			closeButtonElement.removeEventListener("click", onClosePopup);
+			rootElement.removeEventListener("mousedown", onOverlayClick);
+			document.removeEventListener("keydown", onKeyDown);
+			closeButtonElement.removeEventListener("click", onCloseButtonClick);
     }
   };
 
-	const closePopupEscape = (event) => {
+	const onKeyDown = (event) => {
   	if (event.key === "Escape") {
     	popup.close();
   	}
 	}
 
-	const onClosePopup = () => {
+	const onCloseButtonClick = () => {
 		popup.close();
 	}
 
+	const onOverlayClick = (event) => {
+		if (event.target.classList.contains("popup_opened")) {
+			popup.close();
+		}
+	}
+	
   return popup;
 }
 
