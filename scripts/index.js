@@ -31,7 +31,7 @@ function makePopup(rootElement) {
 			popup.close();
 		}
 	}
-	
+
   return popup;
 }
 
@@ -67,7 +67,7 @@ addButton.addEventListener("click", function() {
 	addPopup.open();
 });
 
-const newCardForm = document.querySelector(".popup__form");
+const newCardForm = document.querySelector(".popup__form-add-card");
 const nameInput = document.querySelector(".popup__input_type_name");
 const imageInput = document.querySelector(".popup__input_type_link-url");
 
