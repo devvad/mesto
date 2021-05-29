@@ -5,7 +5,7 @@
   margin-right: 30px;
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
   .profile__avatar {
     margin: 0 auto 26px;
   }
