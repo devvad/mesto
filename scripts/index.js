@@ -95,31 +95,13 @@ function openGallery(name, link) {
 
 // 4 отрисовка списка карточек
 function createCard(name, link) {
-	const card = document.getElementById("card").content.cloneNode(true);
-
-	const cardLike = card.querySelector(".card__like");
-	const deleteIcon = card.querySelector(".card__delete-icon");
-	const cardImage = card.querySelector(".card__image");
-	const cardTitle = card.querySelector(".card__title");
-
-	cardImage.setAttribute("src", link);
-	cardImage.setAttribute("alt", name);
-	cardTitle.innerText = name;
-
-	cardLike.addEventListener("click", function() {
-		cardLike.classList.toggle("card__like_active");
-	});
-
-	deleteIcon.addEventListener("click", function(event) {
-		event.target.closest('.card').remove();
-	});
-
-	cardImage.addEventListener("click", function() {
-		openGallery(name, link);
-	});
-
-	return card;
-}
+	const data = {
+		title: name,
+		imageUrl: link
+	};
+	const card = new Card(data, openGallery, "#card");
+	return card.buildCard();
+};
 
 initialCards.forEach((data) => {
 	const card = createCard(data.name, data.link);
