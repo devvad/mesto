@@ -107,3 +107,19 @@ initialCards.forEach((data) => {
 	const card = createCard(data.name, data.link);
 	cards.append(card);
 });
+
+const validatorSettings = {
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_error",
+  errorClass: "popup__error-message_active"
+};
+
+const formEditProfile = document.querySelector(".popup__form");
+const formAddCard = document.querySelector(".popup__form-add-card");
+
+const editProfileValidator = new FormValidator (validatorSettings, formEditProfile);
+const addCardValidator = new FormValidator (validatorSettings, formAddCard);
+editProfileValidator.enableValidation();
+addCardValidator.enableValidation();
