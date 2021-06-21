@@ -1,4 +1,4 @@
-class Card {
+export default class Card {
 	constructor(data, openGalleryCallback, templateSelector) {
 		this.title = data.title;
 		this.imageUrl = data.imageUrl;

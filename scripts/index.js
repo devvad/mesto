@@ -1,3 +1,6 @@
+import Card from "./Card.js"
+import FormValidator from "./FormValidator.js"
+
 // 0 общие функции для попапов
 function makePopup(rootElement) {
 	const closeButtonElement = rootElement.querySelector(".popup__closed");
@@ -72,6 +75,7 @@ const nameInput = document.querySelector(".popup__input_type_name");
 const imageInput = document.querySelector(".popup__input_type_link-url");
 
 newCardForm.addEventListener("submit", function(event) {
+	const popupButton = event.target.querySelector(".popup__button")
 	event.preventDefault();
 
 	const card = createCard(nameInput.value, imageInput.value);
@@ -79,6 +83,8 @@ newCardForm.addEventListener("submit", function(event) {
 
 	newCardForm.reset();
 	addPopup.close();
+	popupButton.setAttribute("disabled", true);
+	popupButton.classList.add("popup__button_disabled");
 });
 
 // 3 попап - Раскрытие картинки на весь экран:
