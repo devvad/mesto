@@ -1,18 +1,11 @@
 export default class Card {
-	constructor(data, openGalleryCallback, templateSelector, handleCardClick) {
+	constructor(data, templateSelector, handleCardClick) {
 		this.title = data.title;
 		this.imageUrl = data.imageUrl;
-		this.openGalleryCallback = openGalleryCallback;
+		console.log(data);
 		this.template = document.querySelector(templateSelector);
 		this._handleCardClick = handleCardClick;
 	}
-
-	setEventListeners(){
-		const image = this.template.querySelector('.card__image')
-		image.addEventListener("click", () => {
-			this._handleCardClick.open(image);
-			this._handleCardClick.setEventListeners()
-		});
 
 	/**
 	 * Метод для создания DOM-элемента по шаблону
@@ -62,7 +55,7 @@ export default class Card {
 	 * Обработчик клика по изображению.
 	 */
 	_onImageClick() {
-		this.openGalleryCallback(this.title, this.imageUrl);
+		this._handleCardClick(this.title, this.imageUrl);
 	}
 
 	/**

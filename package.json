@@ -33,9 +33,3 @@
     "webpack-dev-server": "^3.11.2"
   }
 }
-
-"scripts": {
-  "build": "rd /s /q dist && webpack"
-}
-
-

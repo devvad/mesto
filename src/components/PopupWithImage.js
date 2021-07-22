@@ -1,9 +1,9 @@
 import Popup from "./Popup.js";
 export default class PopupWithImage extends Popup {
 	constructor({src, alt}, popupSelector) {
+		super(popupSelector);
 		this._src = src;
 		this._alt = alt;
-		super(popupSelector);
 	}
 
 	open() {
@@ -13,6 +13,6 @@ export default class PopupWithImage extends Popup {
 
 		const galleryFigcaption = this._rootElement.querySelector(".popup__figcaption");
 		galleryFigcaption.innerText = this._alt;
-		super();
+		Popup.prototype.open.call(this);
 	}
 }
