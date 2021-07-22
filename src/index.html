@@ -14,12 +14,12 @@
 
 <body class="page">
   <header class="header">
-    <img class="header__logo" src="./images/logo.svg" alt="Логотип сайта Mesto">
+    <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип сайта Mesto">
   </header>
 
 	<main>
 		<section class="profile">
-			<img src="./images/АваВадим.jpg" class="profile__avatar" alt="Фотография Вадима Черепанова">
+			<img src="<%=require('./images/АваВадим.jpg')%>" class="profile__avatar" alt="Фотография Вадима Черепанова">
 			<div class="profile__user">
 				<div class="profile__info">
 					<h1 class="profile__title">Вадим Черепанов</h1>
@@ -88,8 +88,5 @@
 		  </div>
 	  </li>
 	</template>
-
-	<script src="scripts/initialCards.js"></script>
-	<script type="module" src="scripts/index.js"></script>
 </body>
 </html>
