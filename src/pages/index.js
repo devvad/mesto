@@ -12,7 +12,6 @@ import UserInfo from "../components/UserInfo.js";
 const userInfo = new UserInfo({titleProfile, subtitleProfile});
 const popupAdd = new PopupWithForm(function(values) {
 	const card = createCard(values[0], values[1]);
-	console.log(values);
 	cards.prepend(card);
 }, ".popup-type-place");
 popupAdd.setEventListeners();
@@ -46,7 +45,6 @@ function createCard(name, link) {
 		title: name,
 		imageUrl: link
 	};
-	console.log(name, link);
 	const card = new Card(data, "#card", openGallery);
 	return card.buildCard();
 };
