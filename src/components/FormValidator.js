@@ -17,6 +17,7 @@ export default class FormValidator {
 				self._toggleButtonState(inputList, buttonElement);
 			});
 		});
+		this._toggleButtonState(inputList, buttonElement);
 	}
 
 	/**

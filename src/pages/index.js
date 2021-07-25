@@ -11,13 +11,19 @@ import UserInfo from "../components/UserInfo.js";
 
 const userInfo = new UserInfo({titleProfile, subtitleProfile});
 const popupAdd = new PopupWithForm(function(values) {
-	const card = createCard(values[0], values[1]);
+	const card = createCard(values.name, values.link);
 	cards.prepend(card);
-}, addPopupSelector);
+}, () => {}, addPopupSelector);
 popupAdd.setEventListeners();
 
 const popupEdit = new PopupWithForm(function(values){
-	userInfo.setUserInfo({title: values[0], subtitle: values[1]})
+	userInfo.setUserInfo(values);
+}, function(form) {
+	const titleInput = form.querySelector("input[name = 'title']");
+	const subTitleInput = form.querySelector("input[name = 'subtitle']");
+	const user = userInfo.getUserInfo();
+	titleInput.value = user.title;
+	subTitleInput.value = user.subtitle;
 }, editPopupSelector);
 popupEdit.setEventListeners();
 

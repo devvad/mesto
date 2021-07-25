@@ -1,19 +1,18 @@
 import Popup from "./Popup.js";
 export default class PopupWithForm extends Popup {
-	constructor(handleFormSubmit, popupSelector) {
+	constructor(handleFormSubmit, onPopupOpen, popupSelector) {
 		super(popupSelector);
 		this._handleFormSubmit = handleFormSubmit;
 		this._form = this._rootElement.querySelector("form");
 		this._popupButton = this._rootElement.querySelector(".popup__button");
+		this._onPopupOpen = onPopupOpen;
 	}
 
 	_getInputValues() {
 		const inputs = this._rootElement.querySelectorAll(".popup__input");
-		const result = [];
-		for (const input of inputs) {
-			result.push(input.value);
-		}
-		return result;
+		const formValues = {};
+ 		inputs.forEach(input => formValues[input.name] = input.value);
+		 return formValues;
 	}
 
 	setEventListeners() {
@@ -22,17 +21,16 @@ export default class PopupWithForm extends Popup {
 			event.preventDefault();
 			this.close();
 		});
-		Popup.prototype.setEventListeners.call(this);
+		return super.setEventListeners();
 	}
 
 	open() {
-		this._popupButton.setAttribute("disabled", true);
-		this._popupButton.classList.add("popup__button_disabled");
-		Popup.prototype.open.call(this);
+		this._onPopupOpen(this._form);
+		return super.open();
 	}
 
 	close() {
 		this._form.reset();
-		Popup.prototype.close.call(this);
+		return super.close();
 	}
 }

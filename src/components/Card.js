@@ -35,9 +35,9 @@ export default class Card {
 		const cardLike = card.querySelector(".card__like");
 		const deleteIcon = card.querySelector(".card__delete-icon");
 		const cardImage = card.querySelector(".card__image");
-		cardLike.addEventListener("click", () => this._onLikeClick());
-		deleteIcon.addEventListener("click", () => this._onDeleteClick());
-		cardImage.addEventListener("click", () => this._onImageClick());
+		cardLike.addEventListener("click", (event) => this._onLikeClick(event));
+		deleteIcon.addEventListener("click", (event) => this._onDeleteClick(event));
+		cardImage.addEventListener("click", (event) => this._onImageClick(event));
 		return card;
 	}
 
