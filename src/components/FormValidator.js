@@ -2,22 +2,21 @@ export default class FormValidator {
 	constructor(data, formElement) {
 		this.data = data;
 		this.formElement = formElement;
+		this.inputList = Array.from(this.formElement.querySelectorAll(this.data.inputSelector));
 	}
 
 	/**
  	* Навешивает все обработчики события на форму.
  	*/
 	_addEventListeners() {
-		const inputList = Array.from(this.formElement.querySelectorAll(this.data.inputSelector));
 		const buttonElement = this.formElement.querySelector(this.data.submitButtonSelector);
-		const self = this;
-		inputList.forEach((inputElement) => {
-			inputElement.addEventListener("input", function () {
-				self._checkInputValidity(inputElement);
-				self._toggleButtonState(inputList, buttonElement);
+		this.inputList.forEach((inputElement) => {
+			inputElement.addEventListener("input", () => {
+				this._checkInputValidity(inputElement);
+				this._toggleButtonState(this.inputList, buttonElement);
 			});
 		});
-		this._toggleButtonState(inputList, buttonElement);
+		this._toggleButtonState(this.inputList, buttonElement);
 	}
 
 	/**
@@ -86,5 +85,14 @@ export default class FormValidator {
 	 */
 	enableValidation() {
 		this._addEventListeners()
+	}
+
+	/**
+	 * Метод, который скрывает все ошибки.
+	 */
+	hideAllErrors() {
+		this.inputList.forEach((inputElement) => {
+			this._hideInputError(inputElement);
+		});
 	}
 }

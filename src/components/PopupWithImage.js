@@ -12,7 +12,7 @@ export default class PopupWithImage extends Popup {
 		image.setAttribute("alt", this._alt);
 
 		const galleryFigcaption = this._rootElement.querySelector(".popup__figcaption");
-		galleryFigcaption.innerText = this._alt;
-		Popup.prototype.open.call(this);
+		galleryFigcaption.textContent = this._alt;
+		return super.open();
 	}
 }

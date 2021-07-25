@@ -12,8 +12,10 @@ import UserInfo from "../components/UserInfo.js";
 const userInfo = new UserInfo({titleProfile, subtitleProfile});
 const popupAdd = new PopupWithForm(function(values) {
 	const card = createCard(values.name, values.link);
-	cards.prepend(card);
-}, () => {}, addPopupSelector);
+	cardsSection.addItem(card);
+}, () => {}, function() {
+	addCardValidator.hideAllErrors();
+}, addPopupSelector);
 popupAdd.setEventListeners();
 
 const popupEdit = new PopupWithForm(function(values){
@@ -24,6 +26,8 @@ const popupEdit = new PopupWithForm(function(values){
 	const user = userInfo.getUserInfo();
 	titleInput.value = user.title;
 	subTitleInput.value = user.subtitle;
+}, function() {
+	editProfileValidator.hideAllErrors();
 }, editPopupSelector);
 popupEdit.setEventListeners();
 
@@ -56,14 +60,14 @@ function createCard(name, link) {
 };
 
 // Класс Section
-const renderCards = new Section ({
+const cardsSection = new Section ({
   items: initialCards,
   renderer: (item) => {
     const cardElement = createCard(item.name, item.link);
-    renderCards.addItem(cardElement)
+    cardsSection.addItem(cardElement)
   }}, cardsSelector)
 
-renderCards.renderItems()
+	cardsSection.renderItems()
 
 // Валидация форм
 const editProfileValidator = new FormValidator (validatorSettings, formEditProfile);
