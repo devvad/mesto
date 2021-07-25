@@ -11,7 +11,7 @@ export default class Card {
 	 * @return {Node}
 	 */
 	_createCardFromTemplate() {
-		const card = this.template.content.cloneNode(true);
+		const card = this._getTemplate();
 		const cardTitle = card.querySelector(".card__title");
 		cardTitle.innerText = this.title;
 		const cardImage = card.querySelector(".card__image");
@@ -20,6 +20,11 @@ export default class Card {
 
 		return card;
 	}
+
+	_getTemplate() {
+		const card = this.template.content.cloneNode(true);
+    return card;
+  }
 
 	/**
 	 * Метод навешивает обработчики событий на переданную карточку.
@@ -30,9 +35,9 @@ export default class Card {
 		const cardLike = card.querySelector(".card__like");
 		const deleteIcon = card.querySelector(".card__delete-icon");
 		const cardImage = card.querySelector(".card__image");
-		cardLike.addEventListener("click", this._onLikeClick.bind(this));
-		deleteIcon.addEventListener("click", this._onDeleteClick.bind(this));
-		cardImage.addEventListener("click", this._onImageClick.bind(this));
+		cardLike.addEventListener("click", () => this._onLikeClick());
+		deleteIcon.addEventListener("click", () => this._onDeleteClick());
+		cardImage.addEventListener("click", () => this._onImageClick());
 		return card;
 	}
 
