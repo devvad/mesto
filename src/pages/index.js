@@ -1,7 +1,7 @@
 import "./index.css";
-import {initialCards, validatorSettings, editPopup, editButton, titleInput, subtitleInput,
-	titleProfile, subtitleProfile, editProfileForm, cards, addPopup, addButton, newCardForm, nameInput,
-	imageInput, formEditProfile, formAddCard, popupGallerySelector} from "../utils/constants.js";
+import {initialCards, validatorSettings, editButton, addPopupSelector,
+	titleProfile, subtitleProfile, cards, addButton, editPopupSelector,
+	formEditProfile, formAddCard, popupGallerySelector, cardsSelector} from "../utils/constants.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
@@ -13,12 +13,12 @@ const userInfo = new UserInfo({titleProfile, subtitleProfile});
 const popupAdd = new PopupWithForm(function(values) {
 	const card = createCard(values[0], values[1]);
 	cards.prepend(card);
-}, ".popup-type-place");
+}, addPopupSelector);
 popupAdd.setEventListeners();
 
 const popupEdit = new PopupWithForm(function(values){
 	userInfo.setUserInfo({title: values[0], subtitle: values[1]})
-}, ".profile-popup");
+}, editPopupSelector);
 popupEdit.setEventListeners();
 
 // 1 попап - Редактирование профиля:
@@ -55,8 +55,7 @@ const renderCards = new Section ({
   renderer: (item) => {
     const cardElement = createCard(item.name, item.link);
     renderCards.addItem(cardElement)
-  }},
-  ".cards")
+  }}, cardsSelector)
 
 renderCards.renderItems()
 

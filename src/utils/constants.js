@@ -32,7 +32,8 @@ export const validatorSettings = {
   errorClass: "popup__error-message_active"
 };
 
-export const editPopup = document.querySelector(".profile-popup");
+export const editPopupSelector = ".profile-popup";
+export const editPopup = document.querySelector(editPopupSelector);
 export const editButton = document.querySelector(".profile__edit-button");
 export const closeButtonSelector = ".popup__closed";
 export const closeButton = document.querySelector(closeButtonSelector);
@@ -40,10 +41,12 @@ export const titleInput = document.querySelector("#input-popup-title");
 export const subtitleInput = document.querySelector("#input-popup-subtitle");
 export const titleProfile = document.querySelector(".profile__title");
 export const subtitleProfile = document.querySelector(".profile__subtitle");
-export const popupFormSelector = ".popup__form"
+export const popupFormSelector = ".popup__form";
 export const editProfileForm = document.querySelector(popupFormSelector);
-export const cards = document.querySelector(".cards");
-export const addPopup = document.querySelector(".popup-type-place");
+export const cardsSelector = ".cards";
+export const cards = document.querySelector(cardsSelector);
+export const addPopupSelector = ".popup-type-place"
+export const addPopup = document.querySelector(addPopupSelector);
 export const addButton = document.querySelector(".profile__add-button");
 export const newCardForm = document.querySelector(".popup__form-add-card");
 export const nameInput = document.querySelector(".popup__input_type_name");
