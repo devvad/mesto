@@ -4,12 +4,16 @@ export default class FormValidator {
 		this.formElement = formElement;
 		this.inputList = Array.from(this.formElement.querySelectorAll(this.data.inputSelector));
 		this.buttonElement = this.formElement.querySelector(this.data.submitButtonSelector);
+		this._inited = false;
 	}
 
 	/**
  	* Навешивает все обработчики события на форму.
  	*/
 	_addEventListeners() {
+		this.formElement.addEventListener("reset", () => {
+			this._disableSubmitButton();
+		});
 		this.inputList.forEach((inputElement) => {
 			inputElement.addEventListener("input", () => {
 				this._checkInputValidity(inputElement);
@@ -62,12 +66,16 @@ export default class FormValidator {
 	 */
 	_toggleButtonState() {
 		if (this._hasInvalidInput ()) {
-			this.buttonElement.classList.add(this.data.inactiveButtonClass);
-			this.buttonElement.setAttribute("disabled", "disabled");
+			this._disableSubmitButton();
 		} else {
 			this.buttonElement.classList.remove(this.data.inactiveButtonClass);
 			this.buttonElement.removeAttribute("disabled");
 		}
+	}
+
+	_disableSubmitButton() {
+		this.buttonElement.classList.add(this.data.inactiveButtonClass);
+		this.buttonElement.setAttribute("disabled", "disabled");
 	}
 
 	/**
@@ -84,16 +92,10 @@ export default class FormValidator {
 	 * Метод, который включает валидацию формы.
 	 */
 	enableValidation() {
+		if (this._inited) {
+			return;
+		}
+		this._inited = true;
 		this._addEventListeners()
-	}
-
-	/**
-	 * Метод, который скрывает все ошибки.
-	 */
-	hideAllErrors() {
-		this.inputList.forEach((inputElement) => {
-			this._hideInputError(inputElement);
-		});
-		this._toggleButtonState();
 	}
 }

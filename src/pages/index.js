@@ -11,8 +11,7 @@ import UserInfo from "../components/UserInfo.js";
 
 const userInfo = new UserInfo({titleProfile, subtitleProfile});
 const popupAdd = new PopupWithForm(addPopupSelector, function(values) {
-	const card = createCard(values.name, values.link);
-	cardsSection.addItem(card);
+	cardsSection.addItem(createCard(values));
 });
 popupAdd.setEventListeners();
 
@@ -26,6 +25,7 @@ popupEdit.setEventListeners();
 editButton.addEventListener("click", () => {
   popupEdit.open();
 	popupEdit.setInputValues(userInfo.getUserInfo());
+	editProfileValidator.enableValidation();
 })
 
 // 2 попап - Добавление нового места:
@@ -41,7 +41,7 @@ function openGallery(name, link) {
 };
 
 // 4 отрисовка списка карточек
-function createCard(name, link) {
+function createCard({name, link}) {
 	const data = {
 		title: name,
 		imageUrl: link
@@ -54,8 +54,7 @@ function createCard(name, link) {
 const cardsSection = new Section ({
   items: initialCards,
   renderer: (item) => {
-    const cardElement = createCard(item.name, item.link);
-    cardsSection.addItem(cardElement)
+    cardsSection.addItem(createCard(item));
   }}, cardsSelector)
 
 	cardsSection.renderItems()
@@ -63,5 +62,4 @@ const cardsSection = new Section ({
 // Валидация форм
 const editProfileValidator = new FormValidator (validatorSettings, formEditProfile);
 const addCardValidator = new FormValidator (validatorSettings, formAddCard);
-editProfileValidator.enableValidation();
 addCardValidator.enableValidation();
