@@ -25,6 +25,7 @@ popupEdit.setEventListeners();
 // Открытие попапа редактирования профиля:
 editButton.addEventListener("click", () => {
   popupEdit.open();
+	popupEdit.setInputValues(userInfo.getUserInfo());
 })
 
 // 2 попап - Добавление нового места:
