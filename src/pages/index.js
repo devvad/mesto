@@ -10,25 +10,15 @@ import FormValidator from "../components/FormValidator.js";
 import UserInfo from "../components/UserInfo.js";
 
 const userInfo = new UserInfo({titleProfile, subtitleProfile});
-const popupAdd = new PopupWithForm(function(values) {
+const popupAdd = new PopupWithForm(addPopupSelector, function(values) {
 	const card = createCard(values.name, values.link);
 	cardsSection.addItem(card);
-}, () => {}, function() {
-	addCardValidator.hideAllErrors();
-}, addPopupSelector);
+});
 popupAdd.setEventListeners();
 
-const popupEdit = new PopupWithForm(function(values){
+const popupEdit = new PopupWithForm(editPopupSelector, function(values){
 	userInfo.setUserInfo(values);
-}, function(form) {
-	const titleInput = form.querySelector("input[name = 'title']");
-	const subTitleInput = form.querySelector("input[name = 'subtitle']");
-	const user = userInfo.getUserInfo();
-	titleInput.value = user.title;
-	subTitleInput.value = user.subtitle;
-}, function() {
-	editProfileValidator.hideAllErrors();
-}, editPopupSelector);
+});
 popupEdit.setEventListeners();
 
 // 1 попап - Редактирование профиля:
