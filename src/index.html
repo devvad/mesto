@@ -18,13 +18,15 @@
 
 	<main>
 		<section class="profile">
-			<img src="<%=require('./images/АваВадим.jpg')%>" class="profile__avatar" alt="Фотография Вадима Черепанова">
+			<div class="profile__avatar">
+				<button type="button" class="profile__overlay"></button>
+			</div>
 			<div class="profile__user">
 				<div class="profile__info">
-					<h1 class="profile__title">Вадим Черепанов</h1>
+					<h1 class="profile__title"></h1>
 					<button type="button" class="profile__edit-button"></button>
 				</div>
-				<p class="profile__subtitle">Приемник Билла Гейтса</p>
+				<p class="profile__subtitle"></p>
 			</div>
 			<button type="button" class="profile__add-button"></button>
 		</section>
@@ -77,12 +79,35 @@
     </div>
   </div>
 
+	<div class="popup popup_confirmation">
+    <form id="form_remove" class="popup__container">
+      <h2 class="popup__title">Вы уверены?</h2>
+      <button type="submit" class="popup__button">Да</button>
+    </form>
+    <button type="button" class="popup__closed" id="close_remove"></button>
+  </div>
+
+  <div class="popup popup_avatar">
+    <div class="popup__container">
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form id="form-avatar" class="popup__form">
+      	<input type="url" class="popup__input" name="avatar"  id="input__popup-avatar" value="" placeholder="Ссылка на аватар" required>
+      	<span id="input__popup-avatar-error" class="popup__error-message"></span>
+      	<button type="submit" class="popup__button" id="newAvatar">Сохранить</button>
+    	</form>
+    	<button type="button" id="closeAvatar" class="popup__closed"></button>
+  	</div>
+  </div>
+
   <template id="card">
     <li class="card">
 		  <img class="card__image">
 		  <div class="card__info">
 			  <h2 class="card__title"></h2>
-			  <button type="button" class="card__like"></button>
+				<div class="card__like-number">
+			  	<button type="button" class="card__like"></button>
+					<span class="card__likes-container"></span>
+				</div>
 			  <button type="button" class="card__delete-icon"></button>
 		  </div>
 	  </li>
