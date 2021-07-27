@@ -1,9 +1,17 @@
-import { titleProfile } from "../utils/constants";
+const baseUrl = "https://mesto.nomoreparties.co/v1/cohort-26/";
 
 export default class Api {
   constructor(confing) {
     this._headers = confing.headers
   }
+
+	_fetch(url, config) {
+		return fetch(`${baseUrl}${url}`, {
+			headers: this._headers,
+			...config
+		})
+		.then(this._checkError);
+	}
 
   _checkError(res) {
     if (res.ok) {
@@ -14,92 +22,60 @@ export default class Api {
 
   //получаем список всех карточек
   getInitialCards() {
-    return fetch('https://mesto.nomoreparties.co/v1/cohort-26/cards', {
+    return this._fetch("cards", {
       method: 'GET',
-      headers: this._headers
     })
-    .then(this._checkError);
   }
 
   //получаем информацию пользователя
   getUserInfo() {
-    return fetch('https://mesto.nomoreparties.co/v1/cohort-26/users/me', {
+    return this._fetch("users/me", {
       method: 'GET',
-      headers: this._headers
     })
-    .then(this._checkError);
   }
 
   //обновляем аватар
-  newAvatar(avatarUrl) {
-    const newConfing = {
+  newAvatar(data) {
+    return this._fetch("users/me/avatar", {
       method: 'PATCH',
-      headers: this._headers,
-      body: JSON.stringify({
-        avatar: avatarUrl['avatar']
-      }),
-
-    }
-    return fetch(`https://mesto.nomoreparties.co/v1/cohort-26/users/me/avatar`, newConfing)
-    .then(this._checkError);
+      body: JSON.stringify(data),
+    })
   }
 
   // удаляем карточку
   removeCard(cardId) {
-    const newConfing = {
-      headers: this._headers,
+    return this._fetch(`cards/${cardId}`, {
       method: 'DELETE',
-    }
-    return fetch(`https://mesto.nomoreparties.co/v1/cohort-26/cards/${cardId}`, newConfing)
-    .then(this._checkError);
+    })
   }
 
   // ставим лайк
   putLike(cardId) {
-    const newConfing = {
-      headers: this._headers,
+    return this._fetch(`cards/likes/${cardId}`, {
       method: 'PUT',
-    }
-    return fetch(`https://mesto.nomoreparties.co/v1/cohort-26/cards/likes/${cardId}`, newConfing)
-    .then(this._checkError);
+    })
   }
 
   // удаляем лайк
   removeLike(cardId) {
-    const newConfing = {
-      headers: this._headers,
+    return this._fetch(`/cards/likes/${cardId}`, {
       method: 'DELETE',
-    }
-    return fetch(`https://mesto.nomoreparties.co/v1/cohort-26/cards/likes/${cardId}`, newConfing)
-    .then(this._checkError);
+    })
   }
 
   // отправляем информацию
   patchProfileInfo(data) {
-    const newConfing = {
+    return this._fetch("users/me", {
       method: 'PATCH',
-      headers: this._headers,
-      body: JSON.stringify({
-        title: titleProfile,
-        subtitle: subtitleProfile
-      }),
-    }
-    return fetch('https://mesto.nomoreparties.co/v1/cohort-26/users/me', newConfing)
-    .then(this._checkError);
+      body: JSON.stringify(data),
+    })
   }
 
   //отправляем информацию о пользователе на сервер
   patchCard(data) {
-    const newConfing = {
-      method: 'POST',
-      headers: this._headers,
-      body: JSON.stringify({
-        name: data['InputNameCard'],
-        link: data['InputImgCard']
-      }),
-
-  }
-  return fetch('https://mesto.nomoreparties.co/v1/cohort-26/cards', newConfing)
-  .then(this._checkError);
-}
+  	return this._fetch("cards", {
+			method: 'POST',
+			body: JSON.stringify(data),
+		});
+	}
 }
