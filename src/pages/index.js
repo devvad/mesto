@@ -1,4 +1,5 @@
 import "./index.css";
+import Api from "../components/Api.js";
 import {initialCards, validatorSettings, editButton, addPopupSelector,
 	titleProfile, subtitleProfile, cards, addButton, editPopupSelector,
 	formEditProfile, formAddCard, popupGallerySelector, cardsSelector} from "../utils/constants.js";
@@ -8,6 +9,15 @@ import Section from "../components/Section.js";
 import Card from "../components/Card.js" ;
 import FormValidator from "../components/FormValidator.js";
 import UserInfo from "../components/UserInfo.js";
+import PopupConfirmation from "../components/PopupConfirmation.js";
+
+const api = new Api ({
+  url: `https://mesto.nomoreparties.co/v1/cohort-26/`,
+  headers: {
+    authorization: 'abead934-d5b0-49ba-afc0-24d630c67c1b',
+    'Content-Type': 'application/json'
+  }
+});
 
 const userInfo = new UserInfo({titleProfile, subtitleProfile});
 const popupAdd = new PopupWithForm(addPopupSelector, function(values) {

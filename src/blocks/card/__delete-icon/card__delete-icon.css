@@ -9,7 +9,6 @@
   right: 15px;
   cursor: pointer;
 	outline: none;
-	visibility: hidden;
 }
 
 .card__delete-icon:hover {
