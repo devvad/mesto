@@ -19,7 +19,15 @@ const api = new Api ({
   }
 });
 
-const userInfo = new UserInfo({titleProfile, subtitleProfile});
+const userInfo = new UserInfo();
+api.getUserInfo().then((data) => {
+	userInfo.setUserInfo({
+		title: data.name,
+		subtitle: data.about,
+		avatar: data.avatar
+	});
+});
+
 const popupAdd = new PopupWithForm(addPopupSelector, function(values) {
 	cardsSection.addItem(createCard(values));
 });

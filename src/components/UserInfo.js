@@ -1,18 +1,15 @@
-export default class UserInfo{
-  constructor({titleProfile, subtitleProfile}) {
-    this._title = titleProfile;
-    this._subtitle = subtitleProfile;
-  }
-
+import {titleProfile, subtitleProfile, profileAvatar} from "../utils/constants.js";
+export default class UserInfo {
   getUserInfo(){
     return {
-      title: this._title.textContent,
-      subtitle: this._subtitle.textContent
+      title: titleProfile.textContent,
+      subtitle: subtitleProfile.textContent
     }
   }
 
-  setUserInfo({title, subtitle}){
-    this._title.textContent = title;
-    this._subtitle.textContent = subtitle;
+  setUserInfo({title, subtitle, avatar}){
+    titleProfile.textContent = title;
+    subtitleProfile.textContent = subtitle;
+		profileAvatar.setAttribute("src", avatar);
   }
 }
