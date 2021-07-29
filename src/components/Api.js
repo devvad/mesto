@@ -63,7 +63,7 @@ export default class Api {
     })
   }
 
-  // Метод отправки информации:
+  // Метод обновления информации о пользователе:
   patchProfileInfo(data) {
     return this._fetch("users/me", {
       method: 'PATCH',
@@ -71,7 +71,7 @@ export default class Api {
     })
   }
 
-  // Отправление информации о пользователе на сервер:
+  // Обновление информации о карточке на сервере:
   patchCard(data) {
   	return this._fetch("cards", {
 			method: 'POST',

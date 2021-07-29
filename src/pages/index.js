@@ -25,8 +25,8 @@ api.getUserInfo().then((data) => {
 	userInfo.setUserInfo({
 		title: data.name,
 		subtitle: data.about,
-		avatar: data.avatar
 	});
+	userInfo.setUserAvatar(data.avatar);
 });
 
 // Получение списка карточек с сервера и их рендеринг на страницу:
@@ -38,8 +38,7 @@ api.getInitialCards()
 			cardsSection.addItem(createCard(item));
 		}}, cardsSelector)
 	cardsSection.renderItems()
-});
-
+})
 
 const popupAdd = new PopupWithForm(addPopupSelector, function(values) {
 	cardsSection.addItem(createCard(values));
@@ -48,6 +47,10 @@ popupAdd.setEventListeners();
 
 const popupEdit = new PopupWithForm(editPopupSelector, function(values){
 	userInfo.setUserInfo(values);
+	api.patchProfileInfo({
+		name: values.title,
+		about: values.subtitle
+	})
 });
 popupEdit.setEventListeners();
 
