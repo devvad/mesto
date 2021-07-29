@@ -32,13 +32,14 @@ api.getUserInfo().then((data) => {
 // Получение списка карточек с сервера и их рендеринг на страницу:
 api.getInitialCards()
 .then((data) => {
-  cardsSection.renderItems({
-    items: data,
-    renderer: (element) => {
-      const newCard = createCard(element);
-      cardsSection.addItem(newCard)
-    }
-  })
+	const cardsSection = new Section ({
+		items: data,
+		renderer: (item) => {
+			cardsSection.addItem(createCard(item));
+		}}, cardsSelector)
+	cardsSection.renderItems()
+});
+
 
 const popupAdd = new PopupWithForm(addPopupSelector, function(values) {
 	cardsSection.addItem(createCard(values));
@@ -81,13 +82,7 @@ function createCard({name, link}) {
 };
 
 // Класс Section
-const cardsSection = new Section ({
-  items: initialCards,
-  renderer: (item) => {
-    cardsSection.addItem(createCard(item));
-  }}, cardsSelector)
 
-	cardsSection.renderItems()
 
 // Валидация форм
 const editProfileValidator = new FormValidator (validatorSettings, formEditProfile);
