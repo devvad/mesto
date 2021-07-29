@@ -19,6 +19,7 @@ const api = new Api ({
   }
 });
 
+// Получение информации о профиле пользователя:
 const userInfo = new UserInfo();
 api.getUserInfo().then((data) => {
 	userInfo.setUserInfo({
@@ -27,6 +28,17 @@ api.getUserInfo().then((data) => {
 		avatar: data.avatar
 	});
 });
+
+// Получение списка карточек с сервера и их рендеринг на страницу:
+api.getInitialCards()
+.then((data) => {
+  cardsSection.renderItems({
+    items: data,
+    renderer: (element) => {
+      const newCard = createCard(element);
+      cardsSection.addItem(newCard)
+    }
+  })
 
 const popupAdd = new PopupWithForm(addPopupSelector, function(values) {
 	cardsSection.addItem(createCard(values));

@@ -20,21 +20,21 @@ export default class Api {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
-  //получаем список всех карточек
+  // Метод получения списка всех карточек пользователя:
   getInitialCards() {
     return this._fetch("cards", {
       method: 'GET',
     })
   }
 
-  //получаем информацию пользователя
+  // Метод получения информации о пользователе:
   getUserInfo() {
     return this._fetch("users/me", {
       method: 'GET',
     })
   }
 
-  //обновляем аватар
+  // Метод обновления аватара:
   newAvatar(data) {
     return this._fetch("users/me/avatar", {
       method: 'PATCH',
@@ -42,28 +42,28 @@ export default class Api {
     })
   }
 
-  // удаляем карточку
+  // Метод удаления карточки:
   removeCard(cardId) {
     return this._fetch(`cards/${cardId}`, {
       method: 'DELETE',
     })
   }
 
-  // ставим лайк
+  // Метод простановки лайка у карточки:
   putLike(cardId) {
     return this._fetch(`cards/likes/${cardId}`, {
       method: 'PUT',
     })
   }
 
-  // удаляем лайк
+  // Метод удаления лайка у карточки:
   removeLike(cardId) {
     return this._fetch(`/cards/likes/${cardId}`, {
       method: 'DELETE',
     })
   }
 
-  // отправляем информацию
+  // Метод отправки информации:
   patchProfileInfo(data) {
     return this._fetch("users/me", {
       method: 'PATCH',
@@ -71,7 +71,7 @@ export default class Api {
     })
   }
 
-  //отправляем информацию о пользователе на сервер
+  // Отправление информации о пользователе на сервер:
   patchCard(data) {
   	return this._fetch("cards", {
 			method: 'POST',
