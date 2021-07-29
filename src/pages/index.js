@@ -1,6 +1,6 @@
 import "./index.css";
 import Api from "../components/Api.js";
-import {initialCards, validatorSettings, editButton, addPopupSelector,
+import {validatorSettings, editButton, addPopupSelector,
 	titleProfile, subtitleProfile, cards, addButton, editPopupSelector,
 	formEditProfile, formAddCard, popupGallerySelector, cardsSelector} from "../utils/constants.js";
 import PopupWithForm from "../components/PopupWithForm.js";
