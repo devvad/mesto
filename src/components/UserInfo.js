@@ -10,6 +10,6 @@ export default class UserInfo {
   setUserInfo({title, subtitle, avatar}){
     titleProfile.textContent = title;
     subtitleProfile.textContent = subtitle;
-		profileAvatar.setAttribute("src", avatar);
+		profileAvatar.style.backgroundImage = `url(${avatar})`;
   }
 }

@@ -14,5 +14,5 @@
 
 .profile__overlay:hover {
   opacity: 1;
-  transition: .4s;
+  transition: .2s;
 }
