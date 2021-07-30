@@ -1,12 +1,17 @@
 export default class Card {
-	constructor(data, templateSelector, handleCardClick) {
+	constructor(data, templateSelector, handleCardClick, handleLikeClick) {
 		this.title = data.title;
 		this.imageUrl = data.imageUrl;
 		this.template = document.querySelector(templateSelector);
 		this._likes = data.likes;
-		this._myId = data._id;
-		this._cardId = data._id;
+		this._myId = data.myId;
+		this._cardId = data.id;
 		this._handleCardClick = handleCardClick;
+		this._handleLikeClick = handleLikeClick;
+	}
+
+	_setLikesCounter(card, count) {
+		card.querySelector(".card__likes-container").textContent = count;
 	}
 
 	/**
@@ -20,24 +25,8 @@ export default class Card {
 		const cardImage = card.querySelector(".card__image");
 		cardImage.setAttribute("src", this.imageUrl);
 		cardImage.setAttribute("alt", this.title);
-
-	/*	// Счётчик лайков:
-		card.querySelector(".card__likes-container").textContent = this._likes.length;
-		// Отображение активных лайков:
-		this._likes.forEach(like => {
-			if(like._id === this._myId) {
-				card.querySelector(".card__like").classList.add("card__like_active")
-			}
-		}) */
-
 		return card;
 	}
-
-	/* setLikesInfo(info) {
-		this._element.querySelector(".card__likes-container").textContent = info;
-		this._element.querySelector(".card__like").classList.toggle("card__like_active");
-	}; */
-
 
 	_getTemplate() {
 		const card = this.template.content.cloneNode(true);
@@ -64,6 +53,18 @@ export default class Card {
 	 */
 	_onLikeClick(event) {
 		event.target.classList.toggle("card__like_active");
+		this._handleLikeClick(this._cardId);
+	}
+
+	_setLikeIfActive(card) {
+			// Отображение активных лайков:
+			const isLiked = this._likes.some(user => {
+				return user._id === this._myId;
+			});
+
+			if (isLiked) {
+				card.querySelector(".card__like").classList.add("card__like_active");
+			}
 	}
 
 	/**
@@ -86,6 +87,8 @@ export default class Card {
 	buildCard() {
 		const card = this._createCardFromTemplate();
 		this._addEventListenersOnCard(card);
+		this._setLikesCounter(card, this._likes.length);
+		this._setLikeIfActive(card);
 		return card;
 	}
 }

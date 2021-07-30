@@ -1,7 +1,7 @@
 import "./index.css";
 import Api from "../components/Api.js";
-import {validatorSettings, editButton, addPopupSelector,
-	titleProfile, subtitleProfile, cards, addButton, editPopupSelector,
+import {validatorSettings, editButton, addPopupSelector, profileAvatar,
+	titleProfile, subtitleProfile, cards, addButton, editPopupSelector, profileAvatarSelector,
 	formEditProfile, formAddCard, popupGallerySelector, cardsSelector} from "../utils/constants.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -26,6 +26,7 @@ api.getUserInfo().then((data) => {
 		title: data.name,
 		subtitle: data.about,
 	});
+	userInfo.setUserId(data._id);
 	userInfo.setUserAvatar(data.avatar);
 });
 
@@ -63,6 +64,21 @@ const popupEdit = new PopupWithForm(editPopupSelector, function(values){
 });
 popupEdit.setEventListeners();
 
+// Изменение аватара пользователя:
+const popupNewAvatar = new PopupWithForm(profileAvatarSelector, values => {
+  const submitText = profileAvatar.querySelector(".popup__button");
+  submitText.textContent = "Сохранение...";
+  // отправка на сервер и рендер
+  api.newAvatar(values)
+  .then((data) => {
+    userInfo.setUserAvatar(data.avatar);
+    submitText.textContent = "Сохранить";
+    popupNewAvatar.close();
+  })
+  .catch(err => console.log(err))
+})
+popupNewAvatar.setEventListeners()
+
 // 1 попап - Редактирование профиля:
 // Открытие попапа редактирования профиля:
 editButton.addEventListener("click", () => {
@@ -84,12 +100,17 @@ function openGallery(name, link) {
 };
 
 // 4 отрисовка списка карточек
-function createCard({name, link}) {
+function createCard({name, link, likes, _id}) {
 	const data = {
 		title: name,
-		imageUrl: link
+		imageUrl: link,
+		likes: likes,
+		myId: userInfo.getUserId(),
+		id: _id
 	};
-	const card = new Card(data, "#card", openGallery);
+	const card = new Card(data, "#card", openGallery, function(id) {
+		api.putLike(id);
+	});
 	return card.buildCard();
 };
 
