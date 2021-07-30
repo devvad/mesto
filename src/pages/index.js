@@ -70,8 +70,8 @@ const popupNewAvatar = new PopupWithForm(profileAvatarSelector, values => {
   submitText.textContent = "Сохранение...";
   // отправка на сервер и рендер
   api.newAvatar(values)
-  .then((data) => {
-    userInfo.setUserAvatar(data.avatar);
+  .then(() => {
+    userInfo.setUserAvatar(values.avatar);
     submitText.textContent = "Сохранить";
     popupNewAvatar.close();
   })
