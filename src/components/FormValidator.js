@@ -35,7 +35,6 @@ export default class FormValidator {
 		}
 	}
 
-
 	/**
 	 * Показывает переданную ошибку на инпуте.
 	 * @param {Node} inputElement

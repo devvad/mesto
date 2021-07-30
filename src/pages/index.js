@@ -1,7 +1,7 @@
 import "./index.css";
 import Api from "../components/Api.js";
-import {validatorSettings, editButton, addPopupSelector, profileAvatar,
-	titleProfile, subtitleProfile, cards, addButton, editPopupSelector, profileAvatarSelector,
+import {validatorSettings, editButton, addPopupSelector, profileAvatar, popupEditAvatar,
+	newAvatarForm, cards, addButton, editPopupSelector, profileAvatarSelector,
 	formEditProfile, formAddCard, popupGallerySelector, cardsSelector} from "../utils/constants.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -55,12 +55,18 @@ const popupAdd = new PopupWithForm(addPopupSelector, function(values) {
 popupAdd.setEventListeners();
 
 // Получение информации о профиле пользователя с сервера:
-const popupEdit = new PopupWithForm(editPopupSelector, function(values){
+const popupEdit = new PopupWithForm(editPopupSelector, function(values) {
 	userInfo.setUserInfo(values);
+	// const submitText = editPopup.querySelector(".popup__button");
+	// submitText.textContent = "Сохранение...";
 	api.addProfileInfo({
 		name: values.title,
 		about: values.subtitle
 	})
+	// .then(() => {
+  //  submitText.textContent = "Сохранить";
+  // })
+	.catch(err => console.log(err));
 });
 popupEdit.setEventListeners();
 
@@ -75,9 +81,14 @@ const popupNewAvatar = new PopupWithForm(profileAvatarSelector, values => {
     submitText.textContent = "Сохранить";
     popupNewAvatar.close();
   })
-  .catch(err => console.log(err))
+  .catch(err => console.log(err));
 })
-popupNewAvatar.setEventListeners()
+popupNewAvatar.setEventListeners();
+
+// Открытие попапа обновления аватара пользлвателя:
+popupEditAvatar.addEventListener("click", () => {
+  popupNewAvatar.open();
+})
 
 // 1 попап - Редактирование профиля:
 // Открытие попапа редактирования профиля:
@@ -121,4 +132,6 @@ function createCard({name, link, likes, _id}) {
 // Валидация форм
 const editProfileValidator = new FormValidator (validatorSettings, formEditProfile);
 const addCardValidator = new FormValidator (validatorSettings, formAddCard);
+const newAvatarValidator = new FormValidator (validatorSettings, formNewAvatar);
 addCardValidator.enableValidation();
+newAvatarValidator.enableValidation();

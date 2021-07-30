@@ -1,4 +1,4 @@
-import {titleProfile, subtitleProfile, profileAvatar} from "../utils/constants.js";
+import {titleProfile, subtitleProfile, popupEditAvatar} from "../utils/constants.js";
 export default class UserInfo {
   getUserInfo() {
     return {
@@ -13,7 +13,7 @@ export default class UserInfo {
   }
 
 	setUserAvatar(avatar) {
-		profileAvatar.style.backgroundImage = `url(${avatar})`;
+		popupEditAvatar.style.backgroundImage = `url(${avatar})`;
 	}
 
 	setUserId(id) {

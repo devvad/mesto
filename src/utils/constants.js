@@ -7,9 +7,11 @@ export const validatorSettings = {
 };
 
 export const editPopupSelector = ".profile-popup";
+export const editPopup = document.querySelector(editPopupSelector);
 export const profileAvatarSelector = ".popup_avatar";
 export const profileAvatar = document.querySelector(profileAvatarSelector);
-export const editPopup = document.querySelector(editPopupSelector);
+export const popupEditAvatar = document.querySelector(".profile__avatar");
+export const formNewAvatar = document.querySelector('#form-avatar');
 export const editButton = document.querySelector(".profile__edit-button");
 export const closeButtonSelector = ".popup__closed";
 export const closeButton = document.querySelector(closeButtonSelector);
