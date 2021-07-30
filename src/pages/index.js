@@ -93,9 +93,6 @@ function createCard({name, link}) {
 	return card.buildCard();
 };
 
-// Класс Section
-
-
 // Валидация форм
 const editProfileValidator = new FormValidator (validatorSettings, formEditProfile);
 const addCardValidator = new FormValidator (validatorSettings, formAddCard);

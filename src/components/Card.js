@@ -3,6 +3,9 @@ export default class Card {
 		this.title = data.title;
 		this.imageUrl = data.imageUrl;
 		this.template = document.querySelector(templateSelector);
+		this._likes = data.likes;
+		this._myId = data._id;
+		this._cardId = data._id;
 		this._handleCardClick = handleCardClick;
 	}
 
@@ -18,8 +21,23 @@ export default class Card {
 		cardImage.setAttribute("src", this.imageUrl);
 		cardImage.setAttribute("alt", this.title);
 
+	/*	// Счётчик лайков:
+		card.querySelector(".card__likes-container").textContent = this._likes.length;
+		// Отображение активных лайков:
+		this._likes.forEach(like => {
+			if(like._id === this._myId) {
+				card.querySelector(".card__like").classList.add("card__like_active")
+			}
+		}) */
+
 		return card;
 	}
+
+	/* setLikesInfo(info) {
+		this._element.querySelector(".card__likes-container").textContent = info;
+		this._element.querySelector(".card__like").classList.toggle("card__like_active");
+	}; */
+
 
 	_getTemplate() {
 		const card = this.template.content.cloneNode(true);
