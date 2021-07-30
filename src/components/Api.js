@@ -58,7 +58,7 @@ export default class Api {
 
   // Метод удаления лайка у карточки:
   removeLike(cardId) {
-    return this._fetch(`/cards/likes/${cardId}`, {
+    return this._fetch(`cards/likes/${cardId}`, {
       method: 'DELETE',
     })
   }

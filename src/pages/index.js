@@ -108,8 +108,12 @@ function createCard({name, link, likes, _id}) {
 		myId: userInfo.getUserId(),
 		id: _id
 	};
-	const card = new Card(data, "#card", openGallery, function(id) {
-		api.putLike(id);
+	const card = new Card(data, "#card", openGallery, function(id, isLiked) {
+		if (isLiked) {
+			api.removeLike(id);
+		} else {
+			api.putLike(id);
+		}
 	});
 	return card.buildCard();
 };

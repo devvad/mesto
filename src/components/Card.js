@@ -53,14 +53,18 @@ export default class Card {
 	 */
 	_onLikeClick(event) {
 		event.target.classList.toggle("card__like_active");
-		this._handleLikeClick(this._cardId);
+		this._handleLikeClick(this._cardId, this._isLiked());
+	}
+
+	_isLiked() {
+		return this._likes.some(user => {
+			return user._id === this._myId;
+		});
 	}
 
 	_setLikeIfActive(card) {
 			// Отображение активных лайков:
-			const isLiked = this._likes.some(user => {
-				return user._id === this._myId;
-			});
+			const isLiked = this._isLiked();
 
 			if (isLiked) {
 				card.querySelector(".card__like").classList.add("card__like_active");
