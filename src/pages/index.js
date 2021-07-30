@@ -29,25 +29,34 @@ api.getUserInfo().then((data) => {
 	userInfo.setUserAvatar(data.avatar);
 });
 
+const cardsSection = new Section ({
+	items: [],
+	renderer: (item) => {
+		cardsSection.addItem(createCard(item));
+	}}, cardsSelector);
+
 // Получение списка карточек с сервера и их рендеринг на страницу:
 api.getInitialCards()
 .then((data) => {
-	const cardsSection = new Section ({
-		items: data,
-		renderer: (item) => {
-			cardsSection.addItem(createCard(item));
-		}}, cardsSelector)
-	cardsSection.renderItems()
+	cardsSection.setItems(data);
+	cardsSection.renderItems();
 })
 
+// Добавление новой карточки и её отправка на сервер:
 const popupAdd = new PopupWithForm(addPopupSelector, function(values) {
 	cardsSection.addItem(createCard(values));
+	console.log(values);
+	api.addCard({
+		name: values.name,
+		link: values.link
+	})
 });
 popupAdd.setEventListeners();
 
+// Получение информации о профиле пользователя с сервера:
 const popupEdit = new PopupWithForm(editPopupSelector, function(values){
 	userInfo.setUserInfo(values);
-	api.patchProfileInfo({
+	api.addProfileInfo({
 		name: values.title,
 		about: values.subtitle
 	})

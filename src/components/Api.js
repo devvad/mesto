@@ -64,15 +64,15 @@ export default class Api {
   }
 
   // Метод обновления информации о пользователе:
-  patchProfileInfo(data) {
+  addProfileInfo(data) {
     return this._fetch("users/me", {
       method: 'PATCH',
       body: JSON.stringify(data),
     })
   }
 
-  // Обновление информации о карточке на сервере:
-  patchCard(data) {
+  // Добавление новой карточки на сервер:
+  addCard(data) {
   	return this._fetch("cards", {
 			method: 'POST',
 			body: JSON.stringify(data),

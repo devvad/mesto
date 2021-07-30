@@ -14,4 +14,8 @@ export default class Section {
   addItem(element) {
     this._cardContainer.prepend(element);
   }
+
+	setItems(items) {
+		this._items = items;
+	}
 }
