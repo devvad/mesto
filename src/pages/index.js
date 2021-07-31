@@ -133,9 +133,15 @@ function createCard({name, link, likes, _id, owner}) {
 	};
 	const cardElement = new Card(data, "#card", openGallery, function(id, isLiked) {
 		if (isLiked) {
-			api.removeLike(id);
+			return api.removeLike(id)
+			.then((res) => {
+        card.setLikesCounter(res.likes.length);
+      });
 		} else {
-			api.putLike(id);
+			return api.putLike(id)
+			.then((res) => {
+        card.setLikesCounter(res.likes.length);
+      });;
 		}
 	}, () => {
 		popupConfirmDelete.setHandleFormSubmit(() => {

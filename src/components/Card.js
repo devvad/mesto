@@ -12,7 +12,7 @@ export default class Card {
 		this._handleDeleteClick = handleDeleteClick;
 	}
 
-	_setLikesCounter(card, count) {
+	setLikesCounter(card, count) {
 		card.querySelector(".card__likes-container").textContent = count;
 	}
 
@@ -96,7 +96,7 @@ export default class Card {
 	buildCard() {
 		const card = this._createCardFromTemplate();
 		this._addEventListenersOnCard(card);
-		this._setLikesCounter(card, this._likes.length);
+		this.setLikesCounter(card, this._likes.length);
 		this._setLikeIfActive(card);
 		if (this._ownerId !== this._myId) {
 			this._disableDelete(card);
