@@ -1,7 +1,7 @@
 import "./index.css";
 import Api from "../components/Api.js";
 import {validatorSettings, editButton, addPopupSelector, profileAvatar, popupEditAvatar,
-	newAvatarForm, cards, addButton, editPopupSelector, profileAvatarSelector,
+	formNewAvatar, cards, addButton, editPopupSelector, profileAvatarSelector,
 	formEditProfile, formAddCard, popupGallerySelector, cardsSelector} from "../utils/constants.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -21,13 +21,17 @@ const api = new Api ({
 
 // Получение информации о профиле пользователя:
 const userInfo = new UserInfo();
-api.getUserInfo().then((data) => {
+api.getUserInfo()
+.then((data) => {
 	userInfo.setUserInfo({
 		title: data.name,
-		subtitle: data.about,
+		subtitle: data.about
 	});
 	userInfo.setUserId(data._id);
 	userInfo.setUserAvatar(data.avatar);
+})
+.catch((err) => {
+  console.log(err);
 });
 
 const cardsSection = new Section ({
@@ -42,15 +46,20 @@ api.getInitialCards()
 	cardsSection.setItems(data);
 	cardsSection.renderItems();
 })
+.catch((err) => {
+	console.log(err);
+});
 
 // Добавление новой карточки и её отправка на сервер:
 const popupAdd = new PopupWithForm(addPopupSelector, function(values) {
 	cardsSection.addItem(createCard(values));
-	console.log(values);
 	api.addCard({
 		name: values.name,
 		link: values.link
 	})
+	.catch((err) => {
+		console.log(err);
+	});
 });
 popupAdd.setEventListeners();
 
@@ -66,7 +75,9 @@ const popupEdit = new PopupWithForm(editPopupSelector, function(values) {
 	// .then(() => {
   //  submitText.textContent = "Сохранить";
   // })
-	.catch(err => console.log(err));
+	.catch((err) => {
+    console.log(err);
+  });
 });
 popupEdit.setEventListeners();
 
@@ -81,8 +92,10 @@ const popupNewAvatar = new PopupWithForm(profileAvatarSelector, values => {
     submitText.textContent = "Сохранить";
     popupNewAvatar.close();
   })
-  .catch(err => console.log(err));
-})
+  .catch((err) => {
+    console.log(err);
+  });
+});
 popupNewAvatar.setEventListeners();
 
 // Открытие попапа обновления аватара пользлвателя:
@@ -125,7 +138,7 @@ function createCard({name, link, likes, _id}) {
 		} else {
 			api.putLike(id);
 		}
-	});
+	})
 	return card.buildCard();
 };
 
