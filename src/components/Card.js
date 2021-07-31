@@ -3,7 +3,7 @@ export default class Card {
 		this.title = data.title;
 		this.imageUrl = data.imageUrl;
 		this.template = document.querySelector(templateSelector);
-		this._likes = data.likes;
+		this._likes = data.likes || [];
 		this._myId = data.myId;
 		this._cardId = data.id;
 		this._handleCardClick = handleCardClick;

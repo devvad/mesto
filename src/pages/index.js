@@ -52,16 +52,11 @@ api.getInitialCards()
 
 // Добавление новой карточки и её отправка на сервер:
 const popupAdd = new PopupWithForm(addPopupSelector, function(values) {
-	const submitText = popupCard.querySelector(".popup__button");
-  submitText.textContent = "Сохранение ...";
 	cardsSection.addItem(createCard(values));
-	api.addCard({
+	return api.addCard({
 		name: values.name,
 		link: values.link
 	})
-	.then(() => {
-  	submitText.textContent = "Сохранить";
-  })
 	.catch((err) => {
 		console.log(err);
 	});
@@ -71,15 +66,10 @@ popupAdd.setEventListeners();
 // Получение информации о профиле пользователя с сервера:
 const popupEdit = new PopupWithForm(editPopupSelector, function(values) {
 	userInfo.setUserInfo(values);
-	const submitText = editPopup.querySelector(".popup__button");
-	submitText.textContent = "Сохранение...";
-	api.addProfileInfo({
+	return api.addProfileInfo({
 		name: values.title,
 		about: values.subtitle
 	})
-	.then(() => {
-  	submitText.textContent = "Сохранить";
-  })
 	.catch((err) => {
     console.log(err);
   });
@@ -88,12 +78,9 @@ popupEdit.setEventListeners();
 
 // Изменение аватара пользователя:
 const popupNewAvatar = new PopupWithForm(profileAvatarSelector, values => {
-  const submitText = profileAvatar.querySelector(".popup__button");
-  submitText.textContent = "Сохранение...";
-  api.newAvatar(values)
+	return api.newAvatar(values)
   .then(() => {
     userInfo.setUserAvatar(values.avatar);
-    submitText.textContent = "Сохранить";
     popupNewAvatar.close();
   })
   .catch((err) => {
