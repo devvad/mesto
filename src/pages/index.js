@@ -9,6 +9,7 @@ import Section from "../components/Section.js";
 import Card from "../components/Card.js" ;
 import FormValidator from "../components/FormValidator.js";
 import UserInfo from "../components/UserInfo.js";
+import PopupConfirmation from "../components/PopupConfirmation.js";
 
 const api = new Api ({
   url: `https://mesto.nomoreparties.co/v1/cohort-26/`,
@@ -51,7 +52,12 @@ api.getInitialCards()
 
 // Добавление новой карточки и её отправка на сервер:
 const popupAdd = new PopupWithForm(addPopupSelector, function(values) {
-	cardsSection.addItem(createCard(values));
+	cardsSection.addItem(createCard({
+		owner: {
+			_id: userInfo.getUserId()
+		},
+		...values
+	}));
 	return api.addCard({
 		name: values.name,
 		link: values.link
@@ -114,18 +120,20 @@ function openGallery(name, link) {
 };
 
 // 4 отрисовка списка карточек
-function createCard({name, link, likes, _id}) {
+const popupConfirmDelete = new PopupConfirmation(popupConfirmSelector, (id) => {
+	api.removeCard(id);
+});
+popupConfirmDelete.setEventListeners();
+
+function createCard({name, link, likes, _id, owner}) {
 	const data = {
 		title: name,
 		imageUrl: link,
 		likes: likes,
 		myId: userInfo.getUserId(),
-		id: _id
+		id: _id,
+		owner: owner
 	};
-	const popupConfirmDelete = new PopupWithForm(popupConfirmSelector, () => {
-		api.removeCard(_id)
-	});
-	popupConfirmDelete.setEventListeners();
 	const card = new Card(data, "#card", openGallery, function(id, isLiked) {
 		if (isLiked) {
 			api.removeLike(id);
@@ -133,6 +141,7 @@ function createCard({name, link, likes, _id}) {
 			api.putLike(id);
 		}
 	}, () => {
+		popupConfirmDelete.setCardId(_id);
 		popupConfirmDelete.open();
 	});
 	return card.buildCard();

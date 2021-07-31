@@ -6,6 +6,7 @@ export default class Card {
 		this._likes = data.likes || [];
 		this._myId = data.myId;
 		this._cardId = data.id;
+		this._ownerId = data.owner._id;
 		this._handleCardClick = handleCardClick;
 		this._handleLikeClick = handleLikeClick;
 		this._handleDeleteClick = handleDeleteClick;
@@ -13,6 +14,10 @@ export default class Card {
 
 	_setLikesCounter(card, count) {
 		card.querySelector(".card__likes-container").textContent = count;
+	}
+
+	_disableDelete(card) {
+		card.querySelector(".card__delete-icon").classList.add("card__delete-icon_hidden");
 	}
 
 	/**
@@ -75,7 +80,7 @@ export default class Card {
 	/**
 	 * Обработчик клика по кнопке удаления.
 	 */
-	_onDeleteClick(event) {
+	 _onDeleteClick(event) {
 		event.target.closest('.card').remove();
 		this._handleDeleteClick();
 	}
@@ -95,6 +100,9 @@ export default class Card {
 		this._addEventListenersOnCard(card);
 		this._setLikesCounter(card, this._likes.length);
 		this._setLikeIfActive(card);
+		if (this._ownerId !== this._myId) {
+			this._disableDelete(card);
+		}
 		return card;
 	}
 }
