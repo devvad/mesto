@@ -37,7 +37,8 @@ api.getUserInfo()
 const cardsSection = new Section ({
 	items: [],
 	renderer: (item) => {
-		cardsSection.addItem(createCard(item));
+		const card = createCard(item)
+		cardsSection.addItem(card);
 	}}, cardsSelector);
 
 // Получение списка карточек с сервера и их рендеринг на страницу:
@@ -52,15 +53,13 @@ api.getInitialCards()
 
 // Добавление новой карточки и её отправка на сервер:
 const popupAdd = new PopupWithForm(addPopupSelector, function(values) {
-	cardsSection.addItem(createCard({
-		owner: {
-			_id: userInfo.getUserId()
-		},
-		...values
-	}));
 	return api.addCard({
 		name: values.name,
 		link: values.link
+	})
+	.then( (data) => {
+		const card = createCard(data)
+		cardsSection.addItem(card);
 	})
 	.catch((err) => {
 		console.log(err);
@@ -120,9 +119,7 @@ function openGallery(name, link) {
 };
 
 // 4 отрисовка списка карточек
-const popupConfirmDelete = new PopupConfirmation(popupConfirmSelector, (id) => {
-	api.removeCard(id);
-});
+const popupConfirmDelete = new PopupConfirmation(popupConfirmSelector);
 popupConfirmDelete.setEventListeners();
 
 function createCard({name, link, likes, _id, owner}) {
@@ -134,17 +131,22 @@ function createCard({name, link, likes, _id, owner}) {
 		id: _id,
 		owner: owner
 	};
-	const card = new Card(data, "#card", openGallery, function(id, isLiked) {
+	const cardElement = new Card(data, "#card", openGallery, function(id, isLiked) {
 		if (isLiked) {
 			api.removeLike(id);
 		} else {
 			api.putLike(id);
 		}
 	}, () => {
-		popupConfirmDelete.setCardId(_id);
+		popupConfirmDelete.setHandleFormSubmit(() => {
+			api.removeCard(_id)
+			.then(() => {
+				cardElement.remove();
+			})
+		});
 		popupConfirmDelete.open();
-	});
-	return card.buildCard();
+	}).buildCard();
+	return cardElement;
 };
 
 // Валидация форм:

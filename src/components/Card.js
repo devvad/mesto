@@ -25,7 +25,7 @@ export default class Card {
 	 * @return {Node}
 	 */
 	_createCardFromTemplate() {
-		const card = this._getTemplate();
+		const card = this._getNewCardElement();
 		const cardTitle = card.querySelector(".card__title");
 		cardTitle.innerText = this.title;
 		const cardImage = card.querySelector(".card__image");
@@ -34,9 +34,8 @@ export default class Card {
 		return card;
 	}
 
-	_getTemplate() {
-		const card = this.template.content.cloneNode(true);
-    return card;
+	_getNewCardElement() {
+		return this.template.content.querySelector(".card").cloneNode(true);
   }
 
 	/**
@@ -80,9 +79,8 @@ export default class Card {
 	/**
 	 * Обработчик клика по кнопке удаления.
 	 */
-	 _onDeleteClick(event) {
-		event.target.closest('.card').remove();
-		this._handleDeleteClick();
+	_onDeleteClick() {
+		this._handleDeleteClick(this._cardId);
 	}
 
 	/**
