@@ -52,11 +52,16 @@ api.getInitialCards()
 
 // Добавление новой карточки и её отправка на сервер:
 const popupAdd = new PopupWithForm(addPopupSelector, function(values) {
+	const submitText = popupCard.querySelector(".popup__button");
+  submitText.textContent = "Сохранение ...";
 	cardsSection.addItem(createCard(values));
 	api.addCard({
 		name: values.name,
 		link: values.link
 	})
+	.then(() => {
+  	submitText.textContent = "Сохранить";
+  })
 	.catch((err) => {
 		console.log(err);
 	});
@@ -66,15 +71,15 @@ popupAdd.setEventListeners();
 // Получение информации о профиле пользователя с сервера:
 const popupEdit = new PopupWithForm(editPopupSelector, function(values) {
 	userInfo.setUserInfo(values);
-	// const submitText = editPopup.querySelector(".popup__button");
-	// submitText.textContent = "Сохранение...";
+	const submitText = editPopup.querySelector(".popup__button");
+	submitText.textContent = "Сохранение...";
 	api.addProfileInfo({
 		name: values.title,
 		about: values.subtitle
 	})
-	// .then(() => {
-  //  submitText.textContent = "Сохранить";
-  // })
+	.then(() => {
+  	submitText.textContent = "Сохранить";
+  })
 	.catch((err) => {
     console.log(err);
   });
@@ -85,7 +90,6 @@ popupEdit.setEventListeners();
 const popupNewAvatar = new PopupWithForm(profileAvatarSelector, values => {
   const submitText = profileAvatar.querySelector(".popup__button");
   submitText.textContent = "Сохранение...";
-  // отправка на сервер и рендер
   api.newAvatar(values)
   .then(() => {
     userInfo.setUserAvatar(values.avatar);
@@ -142,7 +146,7 @@ function createCard({name, link, likes, _id}) {
 	return card.buildCard();
 };
 
-// Валидация форм
+// Валидация форм:
 const editProfileValidator = new FormValidator (validatorSettings, formEditProfile);
 const addCardValidator = new FormValidator (validatorSettings, formAddCard);
 const newAvatarValidator = new FormValidator (validatorSettings, formNewAvatar);
