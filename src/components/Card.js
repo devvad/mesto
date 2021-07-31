@@ -1,5 +1,5 @@
 export default class Card {
-	constructor(data, templateSelector, handleCardClick, handleLikeClick) {
+	constructor(data, templateSelector, handleCardClick, handleLikeClick, handleDeleteClick) {
 		this.title = data.title;
 		this.imageUrl = data.imageUrl;
 		this.template = document.querySelector(templateSelector);
@@ -8,6 +8,7 @@ export default class Card {
 		this._cardId = data.id;
 		this._handleCardClick = handleCardClick;
 		this._handleLikeClick = handleLikeClick;
+		this._handleDeleteClick = handleDeleteClick;
 	}
 
 	_setLikesCounter(card, count) {
@@ -76,6 +77,7 @@ export default class Card {
 	 */
 	_onDeleteClick(event) {
 		event.target.closest('.card').remove();
+		this._handleDeleteClick();
 	}
 
 	/**

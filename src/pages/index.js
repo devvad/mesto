@@ -1,7 +1,7 @@
 import "./index.css";
 import Api from "../components/Api.js";
-import {validatorSettings, editButton, addPopupSelector, profileAvatar, popupEditAvatar,
-	formNewAvatar, cards, addButton, editPopupSelector, profileAvatarSelector,
+import {validatorSettings, editButton, addPopupSelector, popupConfirmSelector, popupEditAvatar,
+	formNewAvatar, addButton, editPopupSelector, profileAvatarSelector,
 	formEditProfile, formAddCard, popupGallerySelector, cardsSelector} from "../utils/constants.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -9,7 +9,6 @@ import Section from "../components/Section.js";
 import Card from "../components/Card.js" ;
 import FormValidator from "../components/FormValidator.js";
 import UserInfo from "../components/UserInfo.js";
-import PopupConfirmation from "../components/PopupConfirmation.js";
 
 const api = new Api ({
   url: `https://mesto.nomoreparties.co/v1/cohort-26/`,
@@ -123,13 +122,19 @@ function createCard({name, link, likes, _id}) {
 		myId: userInfo.getUserId(),
 		id: _id
 	};
+	const popupConfirmDelete = new PopupWithForm(popupConfirmSelector, () => {
+		api.removeCard(_id)
+	});
+	popupConfirmDelete.setEventListeners();
 	const card = new Card(data, "#card", openGallery, function(id, isLiked) {
 		if (isLiked) {
 			api.removeLike(id);
 		} else {
 			api.putLike(id);
 		}
-	})
+	}, () => {
+		popupConfirmDelete.open();
+	});
 	return card.buildCard();
 };
 

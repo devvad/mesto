@@ -6,6 +6,7 @@ export const validatorSettings = {
   errorClass: "popup__error-message_active"
 };
 
+export const popupConfirmSelector = ".popup_confirmation";
 export const editPopupSelector = ".profile-popup";
 export const editPopup = document.querySelector(editPopupSelector);
 export const profileAvatarSelector = ".popup_avatar";
