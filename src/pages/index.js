@@ -131,19 +131,24 @@ function createCard({name, link, likes, _id, owner}) {
 		id: _id,
 		owner: owner
 	};
-	const cardElement = new Card(data, "#card", openGallery, function(id, isLiked) {
+	const card = new Card(data, "#card", openGallery, handleLikeClick, handleDeleteClick);
+	const cardElement = card.buildCard();
+	function handleLikeClick(id, isLiked) {
 		if (isLiked) {
 			api.removeLike(id)
 			.then((data) => {
-        card.setLikesCounter(id, data.likes.length);
-      });
+				card.setLikesCounter(cardElement, data.likes.length);
+				card.updateLikes(data.likes);
+			});
 		} else {
 			api.putLike(id)
 			.then((data) => {
-        card.setLikesCounter(id, data.likes.length);
-      });;
+				card.setLikesCounter(cardElement, data.likes.length);
+				card.updateLikes(data.likes);
+			});
 		}
-	}, () => {
+	}
+	function handleDeleteClick() {
 		popupConfirmDelete.setHandleFormSubmit(() => {
 			api.removeCard(_id)
 			.then(() => {
@@ -151,7 +156,7 @@ function createCard({name, link, likes, _id, owner}) {
 			})
 		});
 		popupConfirmDelete.open();
-	}).buildCard();
+	}
 	return cardElement;
 };
 

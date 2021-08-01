@@ -16,6 +16,10 @@ export default class Card {
 		card.querySelector(".card__likes-container").textContent = count;
 	}
 
+	updateLikes(likes) {
+		this._likes = likes;
+	}
+
 	_disableDelete(card) {
 		card.querySelector(".card__delete-icon").classList.add("card__delete-icon_hidden");
 	}
