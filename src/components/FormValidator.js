@@ -13,6 +13,9 @@ export default class FormValidator {
 	_addEventListeners() {
 		this._formElement.addEventListener("reset", () => {
 			this._disableSubmitButton();
+			this._inputList.forEach((inputElement) => {
+        this._hideInputError(inputElement)
+      });
 		});
 		this._inputList.forEach((inputElement) => {
 			inputElement.addEventListener("input", () => {
