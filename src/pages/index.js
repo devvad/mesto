@@ -28,9 +28,6 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 	userInfo.setUserAvatar(userData.avatar);
 	cardsSection.setItems(cardsData);
 	cardsSection.renderItems();
-})
-.catch((err) => {
-  console.log(err);
 });
 
 const cardsSection = new Section ({
@@ -50,9 +47,6 @@ const popupAdd = new PopupWithForm(addPopupSelector, function(values) {
 		const card = createCard(data)
 		cardsSection.addItem(card);
 		popupAdd.close();
-	})
-	.catch((err) => {
-		console.log(err);
 	});
 });
 popupAdd.setEventListeners();
@@ -63,10 +57,7 @@ const popupEdit = new PopupWithForm(editPopupSelector, function(data) {
 	.then(() => {
 		userInfo.setUserInfo(data);
 		popupEdit.close();
-	})
-	.catch((err) => {
-    console.log(err);
-  });
+	});
 });
 popupEdit.setEventListeners();
 
@@ -76,9 +67,6 @@ const popupNewAvatar = new PopupWithForm(profileAvatarSelector, values => {
   .then(() => {
     userInfo.setUserAvatar(values.avatar);
     popupNewAvatar.close();
-  })
-  .catch((err) => {
-    console.log(err);
   });
 });
 popupNewAvatar.setEventListeners();
