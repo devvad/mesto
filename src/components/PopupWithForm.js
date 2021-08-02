@@ -27,7 +27,6 @@ export default class PopupWithForm extends Popup {
 				this._popupButton.textContent = oldValue;
 			})
 			event.preventDefault();
-			this.close();
 		});
 		return super.setEventListeners();
 	}

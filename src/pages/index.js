@@ -60,6 +60,7 @@ const popupAdd = new PopupWithForm(addPopupSelector, function(values) {
 	.then( (data) => {
 		const card = createCard(data)
 		cardsSection.addItem(card);
+		popupAdd.close();
 	})
 	.catch((err) => {
 		console.log(err);
@@ -73,6 +74,9 @@ const popupEdit = new PopupWithForm(editPopupSelector, function(values) {
 	return api.addProfileInfo({
 		name: values.title,
 		about: values.subtitle
+	})
+	.then(() => {
+		popupEdit.close();
 	})
 	.catch((err) => {
     console.log(err);
@@ -152,7 +156,8 @@ function createCard({name, link, likes, _id, owner}) {
 			api.removeCard(_id)
 			.then(() => {
 				cardElement.remove();
-			})
+				popupConfirmDelete.close()
+			});
 		});
 		popupConfirmDelete.open();
 	}
