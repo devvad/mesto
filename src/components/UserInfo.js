@@ -7,14 +7,14 @@ export default class UserInfo {
 
   getUserInfo() {
     return {
-      title: this._titleProfile.textContent,
-      subtitle: this._subtitleProfile.textContent
+      name: this._titleProfile.textContent,
+      about: this._subtitleProfile.textContent
     }
   }
 
-  setUserInfo({title, subtitle}) {
-    this._titleProfile.textContent = title;
-    this._subtitleProfile.textContent = subtitle;
+  setUserInfo(data) {
+    this._titleProfile.textContent = data.name;
+    this._subtitleProfile.textContent = data.about;
   }
 
 	setUserAvatar(avatar) {

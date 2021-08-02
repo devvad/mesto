@@ -23,10 +23,7 @@ const api = new Api ({
 const userInfo = new UserInfo(titleProfileSelector, subtitleProfileSelector, editAvatarButtonSelector);
 api.getUserInfo()
 .then((data) => {
-	userInfo.setUserInfo({
-		title: data.name,
-		subtitle: data.about
-	});
+	userInfo.setUserInfo(data);
 	userInfo.setUserId(data._id);
 	userInfo.setUserAvatar(data.avatar);
 })
@@ -69,12 +66,9 @@ const popupAdd = new PopupWithForm(addPopupSelector, function(values) {
 popupAdd.setEventListeners();
 
 // Получение информации о профиле пользователя с сервера:
-const popupEdit = new PopupWithForm(editPopupSelector, function(values) {
-	userInfo.setUserInfo(values);
-	return api.addProfileInfo({
-		name: values.title,
-		about: values.subtitle
-	})
+const popupEdit = new PopupWithForm(editPopupSelector, function(data) {
+	userInfo.setUserInfo(data);
+	return api.addProfileInfo(data)
 	.then(() => {
 		popupEdit.close();
 	})
