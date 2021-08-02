@@ -4,7 +4,6 @@ export default class FormValidator {
 		this._formElement = formElement;
 		this._inputList = Array.from(this._formElement.querySelectorAll(this._data.inputSelector));
 		this._buttonElement = this._formElement.querySelector(this._data.submitButtonSelector);
-		this._inited = false;
 	}
 
 	/**
@@ -94,10 +93,6 @@ export default class FormValidator {
 	 * Метод, который включает валидацию формы.
 	 */
 	enableValidation() {
-		if (this._inited) {
-			return;
-		}
-		this._inited = true;
 		this._addEventListeners()
 	}
 }

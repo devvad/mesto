@@ -103,7 +103,6 @@ popupEditAvatar.addEventListener("click", () => {
 editButton.addEventListener("click", () => {
   popupEdit.open();
 	popupEdit.setInputValues(userInfo.getUserInfo());
-	editProfileValidator.enableValidation();
 })
 
 // 2 попап - Добавление нового места:
@@ -166,3 +165,4 @@ const addCardValidator = new FormValidator (validatorSettings, formAddCard);
 const newAvatarValidator = new FormValidator (validatorSettings, formNewAvatar);
 addCardValidator.enableValidation();
 newAvatarValidator.enableValidation();
+editProfileValidator.enableValidation();
