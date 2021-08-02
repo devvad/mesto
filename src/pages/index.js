@@ -19,13 +19,15 @@ const api = new Api ({
   }
 });
 
-// Получение информации о профиле пользователя:
+// Получение информации о профиле пользователя  и получение списка карточек с сервера и их рендеринг на страницу:
 const userInfo = new UserInfo(titleProfileSelector, subtitleProfileSelector, editAvatarButtonSelector);
-api.getUserInfo()
-.then((data) => {
-	userInfo.setUserInfo(data);
-	userInfo.setUserId(data._id);
-	userInfo.setUserAvatar(data.avatar);
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+.then(([userData, cardsData]) => {
+	userInfo.setUserInfo(userData);
+	userInfo.setUserId(userData._id);
+	userInfo.setUserAvatar(userData.avatar);
+	cardsSection.setItems(cardsData);
+	cardsSection.renderItems();
 })
 .catch((err) => {
   console.log(err);
@@ -37,16 +39,6 @@ const cardsSection = new Section ({
 		const card = createCard(item)
 		cardsSection.addItem(card);
 	}}, cardsSelector);
-
-// Получение списка карточек с сервера и их рендеринг на страницу:
-api.getInitialCards()
-.then((data) => {
-	cardsSection.setItems(data);
-	cardsSection.renderItems();
-})
-.catch((err) => {
-	console.log(err);
-});
 
 // Добавление новой карточки и её отправка на сервер:
 const popupAdd = new PopupWithForm(addPopupSelector, function(values) {
