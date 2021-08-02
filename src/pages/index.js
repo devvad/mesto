@@ -137,13 +137,13 @@ function createCard({name, link, likes, _id, owner}) {
 		if (isLiked) {
 			api.removeLike(id)
 			.then((data) => {
-				card.setLikesCounter(cardElement, data.likes.length);
+				card.setLikesCounter(data.likes.length);
 				card.updateLikes(data.likes);
 			});
 		} else {
 			api.putLike(id)
 			.then((data) => {
-				card.setLikesCounter(cardElement, data.likes.length);
+				card.setLikesCounter(data.likes.length);
 				card.updateLikes(data.likes);
 			});
 		}
