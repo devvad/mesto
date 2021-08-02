@@ -59,9 +59,9 @@ popupAdd.setEventListeners();
 
 // Получение информации о профиле пользователя с сервера:
 const popupEdit = new PopupWithForm(editPopupSelector, function(data) {
-	userInfo.setUserInfo(data);
 	return api.addProfileInfo(data)
 	.then(() => {
+		userInfo.setUserInfo(data);
 		popupEdit.close();
 	})
 	.catch((err) => {
