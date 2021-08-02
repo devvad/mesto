@@ -115,10 +115,11 @@ addButton.addEventListener("click", function() {
 });
 
 // 3 попап - Раскрытие картинки на весь экран:
+const popupWithGallery = new PopupWithImage(popupGallerySelector);
+popupWithGallery.setEventListeners();
+
 function openGallery(name, link) {
-	const popupWithGallery = new PopupWithImage({src: link, alt: name}, popupGallerySelector);
-	popupWithGallery.setEventListeners();
-	popupWithGallery.open();
+	popupWithGallery.open({src: link, alt: name});
 };
 
 // 4 отрисовка списка карточек
