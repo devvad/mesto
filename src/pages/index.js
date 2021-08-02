@@ -1,7 +1,7 @@
 import "./index.css";
 import Api from "../components/Api.js";
-import {validatorSettings, editButton, addPopupSelector, popupConfirmSelector, popupEditAvatar,
-	formNewAvatar, addButton, editPopupSelector, profileAvatarSelector,
+import {validatorSettings, editButton, addPopupSelector, popupConfirmSelector, editAvatarButtonSelector,
+	formNewAvatar, addButton, editPopupSelector, profileAvatarSelector, titleProfileSelector, subtitleProfileSelector, popupEditAvatarSelector,
 	formEditProfile, formAddCard, popupGallerySelector, cardsSelector} from "../utils/constants.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -20,7 +20,7 @@ const api = new Api ({
 });
 
 // Получение информации о профиле пользователя:
-const userInfo = new UserInfo();
+const userInfo = new UserInfo(titleProfileSelector, subtitleProfileSelector, editAvatarButtonSelector);
 api.getUserInfo()
 .then((data) => {
 	userInfo.setUserInfo({
@@ -98,7 +98,7 @@ const popupNewAvatar = new PopupWithForm(profileAvatarSelector, values => {
 popupNewAvatar.setEventListeners();
 
 // Открытие попапа обновления аватара пользлвателя:
-popupEditAvatar.addEventListener("click", () => {
+document.querySelector(editAvatarButtonSelector).addEventListener("click", () => {
   popupNewAvatar.open();
 })
 

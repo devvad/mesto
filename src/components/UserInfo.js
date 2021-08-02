@@ -1,19 +1,24 @@
-import {titleProfile, subtitleProfile, popupEditAvatar} from "../utils/constants.js";
 export default class UserInfo {
+	constructor(titleProfileSelector, subtitleProfileSelector, editAvatarButtonSelector) {
+		this._titleProfile = document.querySelector(titleProfileSelector);
+		this._subtitleProfile = document.querySelector(subtitleProfileSelector);
+		this._editAvatarButton = document.querySelector(editAvatarButtonSelector);
+	}
+
   getUserInfo() {
     return {
-      title: titleProfile.textContent,
-      subtitle: subtitleProfile.textContent
+      title: this._titleProfile.textContent,
+      subtitle: this._subtitleProfile.textContent
     }
   }
 
   setUserInfo({title, subtitle}) {
-    titleProfile.textContent = title;
-    subtitleProfile.textContent = subtitle;
+    this._titleProfile.textContent = title;
+    this._subtitleProfile.textContent = subtitle;
   }
 
 	setUserAvatar(avatar) {
-		popupEditAvatar.style.backgroundImage = `url(${avatar})`;
+		this._editAvatarButton.style.backgroundImage = `url(${avatar})`;
 	}
 
 	setUserId(id) {
