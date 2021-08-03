@@ -10,10 +10,7 @@ export default class Api {
 			headers: this._headers,
 			...config
 		})
-		.then(this._checkError)
-		.catch((err) => {
-			console.log(err);
-		});
+		.then(this._checkError);
 	}
 
   _checkError(res) {
