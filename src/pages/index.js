@@ -83,7 +83,7 @@ const popupNewAvatar = new PopupWithForm(profileAvatarSelector, values => {
 });
 popupNewAvatar.setEventListeners();
 
-// Открытие попапа обновления аватара пользлвателя:
+// Открытие попапа обновления аватара пользователя:
 document.querySelector(editAvatarButtonSelector).addEventListener("click", () => {
   popupNewAvatar.open();
 })
