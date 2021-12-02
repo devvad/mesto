@@ -1,3 +1,11 @@
+// DRY > WET
+// https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
+//
+// import { $ } from './helpers'
+//
+// - export const editPopup = document.querySelector(editPopupSelector);
+// + export const editPopup = $(editPopupSelector); etc...
+
 export const validatorSettings = {
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button",
